@@ -587,7 +587,7 @@ const basePortfolioData: PortfolioData = {
       shortDescription: "중고 도서 거래 및 독서 커뮤니티 앱", // Placeholder, will be updated
       type: "personal",
       icon: "📚",
-      imageUrl: "/mbook-logo.png", // Placeholder, will be updated
+      imageUrl: "/mbook-main.jpg", // Placeholder, will be updated
       tags: [
         // Placeholder, will be updated
         "AWS EC2",
@@ -955,7 +955,7 @@ export const portfolioData: PortfolioData = {
         ...p,
         name: "엠북(MBOOK)",
         shortDescription: "태그 기반 작품 추천 및 리뷰 공유, 그룹 채팅 커뮤니티 플랫폼 (영화, 책 등)",
-        imageUrl: "/mbook-logo.png", // CHANGED: Using logo for testing
+        imageUrl: "/mbook-main.jpg", // CHANGED: Using logo for testing
         tags: [
           "Java",
           "SpringBoot",
