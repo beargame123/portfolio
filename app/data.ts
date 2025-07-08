@@ -220,7 +220,7 @@ const basePortfolioData: PortfolioData = {
       shortDescription: "타로 운세 상담 플랫폼",
       type: "work",
       icon: "🔮",
-      period: "2025.04 ~ 현재",
+      period: "2025.04 ~ 2025.05",
       role: "백엔드 개발",
       liveUrl: "https://youtube.com/shorts/98QF26q2ncA",
       imageUrl: "/taropick-main-banner.png",
