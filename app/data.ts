@@ -222,7 +222,7 @@ const basePortfolioData: PortfolioData = {
       icon: "🔮",
       period: "2025.04 ~ 현재",
       role: "백엔드 개발",
-      liveUrl: "https://taropick.co.kr",
+      liveUrl: "https://youtube.com/shorts/98QF26q2ncA",
       imageUrl: "/taropick-main-banner.png",
       overview: "타로 운세 상담 플랫폼입니다. 실시간 상담, 결제, 사용자 관리 기능을 제공합니다.",
       techStack: [
@@ -352,7 +352,7 @@ const basePortfolioData: PortfolioData = {
         },
       ],
       achievements: ["네이버 주문 연동 자동 주문 처리 및 메일 발송 시스템 구현", "Thymeleaf를 활용한 풀스택 개발 경험"],
-      tags: ["Java", "Spring Boot", "Thymeleaf", "AWS", "E-commerce"],
+      tags: ["Java", "Spring Boot", "Thymeleaf", "AWS"],
     },
     {
       id: "oheung",
@@ -434,7 +434,7 @@ const basePortfolioData: PortfolioData = {
         { title: "OS 설치 및 인프라 구성", items: ["Ubuntu 설치 및 최적화", "Master Node 에러 해결"] },
       ],
       achievements: ["외부에서 MongoDB, Kafka 연결을 성공적으로 구성하여 서비스 안정성 확보"],
-      tags: ["Rust", "Docker", "Kafka", "MongoDB", "Infrastructure"],
+      tags: ["Rust", "Docker", "Kafka", "MongoDB"],
     },
     {
       id: "hura-pslte",
@@ -486,7 +486,7 @@ const basePortfolioData: PortfolioData = {
         "CPU 사용률 20% 이하 최적화 성공",
         "부팅 후 1분 이내 전체 서비스 자동 활성화 구현",
       ],
-      tags: ["Rust", "Python", "gRPC", "Real-time", "IoT"],
+      tags: ["Rust", "Python", "gRPC", "IoT"],
     },
   ],
   personalProjects: [
@@ -551,6 +551,7 @@ const basePortfolioData: PortfolioData = {
         "Chrome 확장 프로그램 형태로 개발하여 브라우저 연동성 확보",
         "다크모드, 스크린샷, 음성 입력 등 사용자 편의 기능 제공",
       ],
+      liveUrl: "https://www.youtube.com/watch?v=8i6-xsto214",
     },
     {
       id: "haru-kkeut",
