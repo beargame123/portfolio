@@ -510,7 +510,7 @@ const basePortfolioData: PortfolioData = {
         "Chrome Extension",
         "AI",
       ],
-      period: "2025.04.06 ~ 진행중",
+      period: "2025.04.06 ~ 2025.06.02",
       role: "BackEnd (100%), FrontEnd (70%), PM",
       githubUrl: "https://github.com/KR-ZITI",
       overview:
