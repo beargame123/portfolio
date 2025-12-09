@@ -4,13 +4,20 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "@/components/ui/dialog";
-import Image from "next/image";
+} from "@/components/ui/dialog"
+import Image from "next/image"
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel"
 
 interface ImagePreviewDialogProps {
-  imageUrl: string;
-  altText: string;
-  children: React.ReactNode;
+  imageUrl: string | string[]
+  altText: string
+  children: React.ReactNode
 }
 
 export function ImagePreviewDialog({
@@ -25,15 +32,36 @@ export function ImagePreviewDialog({
         <DialogHeader>
           <DialogTitle>{altText}</DialogTitle>
         </DialogHeader>
-        <div className="relative h-[80vh]">
-          <Image
-            src={imageUrl}
-            alt={altText}
-            layout="fill"
-            objectFit="contain"
-          />
-        </div>
+        {Array.isArray(imageUrl) ? (
+          <Carousel className="w-full">
+            <CarouselContent>
+              {imageUrl.map((url, index) => (
+                <CarouselItem key={index}>
+                  <div className="relative h-[80vh]">
+                    <Image
+                      src={url}
+                      alt={`${altText} - ${index + 1}`}
+                      layout="fill"
+                      objectFit="contain"
+                    />
+                  </div>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+            <CarouselPrevious />
+            <CarouselNext />
+          </Carousel>
+        ) : (
+          <div className="relative h-[80vh]">
+            <Image
+              src={imageUrl}
+              alt={altText}
+              layout="fill"
+              objectFit="contain"
+            />
+          </div>
+        )}
       </DialogContent>
     </Dialog>
-  );
+  )
 }

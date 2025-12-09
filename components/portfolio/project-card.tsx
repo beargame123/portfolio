@@ -15,22 +15,30 @@ export function ProjectCard({ project }: ProjectCardProps) {
   return (
     <Card className="shadow-lg flex flex-col">
       <CardHeader>
-        {project.imageUrl && (
-          <ImagePreviewDialog
-            imageUrl={project.imageUrl}
-            altText={project.name}
-          >
-            <div className="relative w-full h-48 mb-4 cursor-pointer">
-              <Image
-                src={project.imageUrl || "/placeholder.svg"}
-                alt={project.name}
-                layout="fill"
-                objectFit="cover"
-                className="rounded-t-lg"
-              />
+        {project.imageUrl &&
+          (typeof project.imageUrl === "string" && project.imageUrl.includes("youtube.com/embed") ? (
+            <div className="relative w-full h-48 mb-4">
+              <iframe
+                src={project.imageUrl}
+                title={project.name}
+                className="absolute top-0 left-0 w-full h-full rounded-t-lg"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              ></iframe>
             </div>
-          </ImagePreviewDialog>
-        )}
+          ) : (
+            <ImagePreviewDialog imageUrl={project.imageUrl} altText={project.name}>
+              <div className="relative w-full h-48 mb-4 cursor-pointer">
+                <Image
+                  src={project.imageUrl || "/placeholder.svg"}
+                  alt={project.name}
+                  layout="fill"
+                  objectFit="cover"
+                  className="rounded-t-lg"
+                />
+              </div>
+            </ImagePreviewDialog>
+          ))}
         <CardTitle className="text-xl font-semibold text-slate-800 flex items-center">
           {project.icon && <span className="mr-2 text-2xl">{project.icon}</span>}
           {project.name}
@@ -82,25 +90,49 @@ export function ProjectCard({ project }: ProjectCardProps) {
                   <strong>{task.title}:</strong>
                   <ul className="list-disc list-inside ml-4">
                     {task.items.map((item) => (
-                      <li key={item}>{item}</li>
+                      <li key={item} className="whitespace-pre-line">{item}</li>
                     ))}
                   </ul>
-                  {task.imageUrl && (
-                    <ImagePreviewDialog
-                      imageUrl={task.imageUrl}
-                      altText={task.title}
-                    >
-                      <div className="relative w-[200px] h-[150px] mt-2 rounded cursor-pointer overflow-hidden">
-                        <Image
-                          src={task.imageUrl || "/placeholder.svg"}
-                          alt={task.title}
-                          layout="fill"
-                          objectFit="cover"
-                          className="transition-transform duration-300 hover:scale-110"
-                        />
+                  {task.imageUrl &&
+                    (typeof task.imageUrl === "string" && task.imageUrl.includes("youtube.com/embed") ? (
+                      <div className="relative w-[200px] h-[150px] mt-2 rounded overflow-hidden">
+                        <iframe
+                          src={task.imageUrl}
+                          title={task.title}
+                          className="absolute top-0 left-0 w-full h-full"
+                          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                          allowFullScreen
+                        ></iframe>
                       </div>
-                    </ImagePreviewDialog>
-                  )}
+                    ) : (
+                      <ImagePreviewDialog imageUrl={task.imageUrl} altText={task.title}>
+                        {Array.isArray(task.imageUrl) ? (
+                          <div className="flex gap-2 mt-2 cursor-pointer">
+                            {task.imageUrl.map((url, index) => (
+                              <div key={index} className="relative w-24 h-16 rounded overflow-hidden">
+                                <Image
+                                  src={url}
+                                  alt={`${task.title} ${index + 1}`}
+                                  layout="fill"
+                                  objectFit="cover"
+                                  className="transition-transform duration-300 hover:scale-110"
+                                />
+                              </div>
+                            ))}
+                          </div>
+                        ) : (
+                          <div className="relative w-[200px] h-[150px] mt-2 rounded cursor-pointer overflow-hidden">
+                            <Image
+                              src={task.imageUrl as string}
+                              alt={task.title}
+                              layout="fill"
+                              objectFit="cover"
+                              className="transition-transform duration-300 hover:scale-110"
+                            />
+                          </div>
+                        )}
+                      </ImagePreviewDialog>
+                    ))}
                 </div>
               ))}
               {project.achievements && (

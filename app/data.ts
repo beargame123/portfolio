@@ -61,7 +61,7 @@ export interface Experience {
 export interface ProjectTask {
   title: string
   items: string[]
-  imageUrl?: string
+  imageUrl?: string | string[]
 }
 
 export interface Project {
@@ -495,6 +495,101 @@ const basePortfolioData: PortfolioData = {
     },
   ],
   personalProjects: [
+    {
+      id: "haru2end-2.0",
+      name: "하루의끝 2.0",
+      shortDescription: "BackEnd, FrontEnd, Android 개발을 1인이 진행한 개인 프로젝트",
+      type: "personal",
+      icon: "🌙",
+      imageUrl: "/haru2end/logo.png",
+      tags: [
+        "Kotlin",
+        "Spring Boot",
+        "Java",
+        "React",
+        "i18next",
+        "react-i18next",
+        "React Native",
+        "OAuth2.0",
+        "JWT",
+        "Self-hosting"
+      ],
+      period: "2025.07.02 ~ 2025.09.27",
+      role: "Front-End, Back-End, Android, Design",
+      overview:
+        "하루를 끝내며 오늘의 순간과 감정을 기록하고, 감성적인 일기를 꾸밀 수 있는 다이어리형 커뮤니티 서비스",
+      techStack: ["Kotlin", "Spring Boot 3.x", "Java21", "Redis", "MySQL", "React", "react-i18next", "React Native", "OAuth2.0", "JWT", "Docker", "Self-hosted MiniPC"],
+      teamComposition: ["1인 개발 (Front-End, Back-End, Android, Design)"],
+      tasks: [
+        {
+          title: "DB 구축 및 환경 구성",
+          items: ["DB 구축 및 환경구성 은 아래 문서 아이콘에서 확인해주세요."],
+        },
+        {
+          title: "다크/라이트 모드",
+          items: ["다크/ 라이트 버튼을 누르게 되면 다크 모드 또는 라이트 모드로 변경할 수 있습니다."],
+          imageUrl: ["/haru2end/dark.png", "/haru2end/light.png"],
+        },
+        {
+          title: "다양한 언어지원",
+          items: ["i18next와 react-i18next를 사용하여 다양한 나라의 번역을 지원합니다."],
+          imageUrl: [
+            "/haru2end/china.png",
+            "/haru2end/english.png",
+            "/haru2end/japan.png",
+          ],
+        },
+        {
+          title: "로컬 회원가입 및 로그인 / SNS 로그인",
+          items: [
+            "하루의끝 사이트에서 계정을 만들 수 있고, 또는 SNS ( 카카오, 구글 )을 통하여 하루의끝 계정을 만들 수 있습니다.\n\n",
+            "카카오 구글 로그인은 Oatuh2.0 code 방식으로 구현하였으며, 두 로그인 기능 모두 로그인을 하게 되면, jwt(atk, rtk)를 발급하여 인증을 하는 방식입니다.",
+          ],
+          imageUrl: "https://www.youtube.com/embed/vRXt4EmXfLc",
+        },
+        {
+          title: "다양한 음악(mp3) 지원",
+          items: ["사이트에 기본적으로 3가지 정도의 mp3를 들을 수 있으며, 사용자가 원한다면, 직접 자신의 mp3또는 mp4를 넣어 들을 수 있습니다."],
+          imageUrl: "https://www.youtube.com/embed/mVVlhaOaeQQ",
+        },
+        {
+          title: "일기 작성 및 일기 목록 , 일기 자세히 보기",
+          items: [
+            "일기 작성: 오늘 하루에 대한 일기를 작성할 수 있으며, “오늘의 감정”을 통해 자신이 느낀 오늘 하루의 감정을 선택하고, 사진을 추가하여 일기의 썸네일로 사용할 수 있고, 일기 제목과 내용을 작성하고 “오늘의 일기 저장하기” 버튼을 클릭하여 일기를 저장할 수 있습니다.\n\n",
+            "일기 목록: 자신의 작성한 일기들을 최신순으로 볼 수 있으며, “커뮤니티에 공유” 버튼을 클릭하여 커뮤니티에 자신의 일기를 공유할 수 있고, “삭제” 버튼을 클릭하여 일기를 삭제할 수 있습니다.\n\n",
+            "일기 자세히 보기: 일기 목록에서 일기를 클릭하게 되면, 제목과 내용, 언제 작성했는지, 그때의 감정, 내용은 몇자를 작성했는지가 나오게 됩니다. ( 사진이 있는 경우라면, 내용 위에 사진이 보이게 되고, 사진을 클릭하면, 사진을 자세히 볼 수 있게 됩니다. )",
+          ],
+          imageUrl: "https://www.youtube.com/embed/bogyxTg5Bds",
+        },
+        {
+          title: "커뮤니티 탭",
+          items: [
+            "자신이 작성한 일기를 커뮤니티에 공유를 하며, 서로의 일기를 공유하고, 소통할 수 있는 커뮤니티 기능을 개발하였습니다.\n\n",
+            "커뮤니티 탭은 최신순, 인기순, 각종 감정카테고리로 구성되어 있고, 글을 클릭하게 되면, 조회수, 댓글, 게시글 좋아요 수를 확인할 수 있고, 댓글을 작성하여 소통할 수 있게 되어있습니다.",
+          ],
+          imageUrl: "https://www.youtube.com/embed/2PbvPAeawrU",
+        },
+        {
+          title: "공유하기",
+          items: ["일기를 공유하기 버튼을 클릭하여, “하루의 끝”을 모르는 사람들에게 공유를 할 수 있습니다."],
+          imageUrl: "https://www.youtube.com/embed/nn0hPVa2QRA",
+        },
+        {
+          title: "구글스토어 출시",
+          items: [
+            "리엑티브 네이티브를 통하여, Android를 개발하였으며, 구글스토어에 “하루의끝” 으로 어플을 출시하게 되었습니다.",
+          ],
+          imageUrl: "/haru2end/google-play-screenshot.png",
+        },
+      ],
+      achievements: [
+        "먼저 개발을 진행하면서, 원래는 AWS에 있는 EC2, RDS, S3등을 사용하여, 서비스를 편하게 구축하였습니다. 하지만, 이번 프로젝트는 자체 서버 컴퓨터를 두어, EC2, RDS, S3등이 없이 직접 미니PC에 서버를 구축을 하며, 새로운 경험과 기술을 습득하게 되었습니다.\n\n",
+        "Java21 + SpringBoot3.x를 보통 사용하였다면, 이번에는 Kotlin + SpringBoot3.x를 사용하여, Null에 대한 안정성등을 확보를 할 수 있었습니다.",
+      ],
+      githubUrl: "https://github.com/KR-TD",
+      liveUrl: "https://haru2end.com",
+      notionUrl: "https://haru2end.notion.site/Haru2End-26244522a025803b8cdfcbd90c3b0822?pvs=73",
+    },
     {
       id: "ziti",
       name: "ZITI(지티)",

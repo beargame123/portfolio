@@ -674,7 +674,7 @@ const basePortfolioData = {
                 "Self-hosting"
             ],
             period: "2025.07.02 ~ 2025.09.27",
-            role: "1명이 진행 (Front-End, Back-End, Android, Design)",
+            role: "Front-End, Back-End, Android, Design",
             overview: "하루를 끝내며 오늘의 순간과 감정을 기록하고, 감성적인 일기를 꾸밀 수 있는 다이어리형 커뮤니티 서비스",
             techStack: [
                 "Kotlin",
@@ -705,53 +705,60 @@ const basePortfolioData = {
                     items: [
                         "다크/ 라이트 버튼을 누르게 되면 다크 모드 또는 라이트 모드로 변경할 수 있습니다."
                     ],
-                    imageUrl: "/haru2end/dark.png"
+                    imageUrl: [
+                        "/haru2end/dark.png",
+                        "/haru2end/light.png"
+                    ]
                 },
                 {
                     title: "다양한 언어지원",
                     items: [
                         "i18next와 react-i18next를 사용하여 다양한 나라의 번역을 지원합니다."
                     ],
-                    imageUrl: "/haru2end/IMG_0629.png"
+                    imageUrl: [
+                        "/haru2end/china.png",
+                        "/haru2end/english.png",
+                        "/haru2end/japan.png"
+                    ]
                 },
                 {
                     title: "로컬 회원가입 및 로그인 / SNS 로그인",
                     items: [
-                        "하루의끝 사이트에서 계정을 만들 수 있고, 또는 SNS ( 카카오, 구글 )을 통하여 하루의끝 계정을 만들 수 있습니다.",
+                        "하루의끝 사이트에서 계정을 만들 수 있고, 또는 SNS ( 카카오, 구글 )을 통하여 하루의끝 계정을 만들 수 있습니다.\n\n",
                         "카카오 구글 로그인은 Oatuh2.0 code 방식으로 구현하였으며, 두 로그인 기능 모두 로그인을 하게 되면, jwt(atk, rtk)를 발급하여 인증을 하는 방식입니다."
                     ],
-                    imageUrl: "https://www.youtube.com/shorts/vRXt4EmXfLc"
+                    imageUrl: "https://www.youtube.com/embed/vRXt4EmXfLc"
                 },
                 {
                     title: "다양한 음악(mp3) 지원",
                     items: [
                         "사이트에 기본적으로 3가지 정도의 mp3를 들을 수 있으며, 사용자가 원한다면, 직접 자신의 mp3또는 mp4를 넣어 들을 수 있습니다."
                     ],
-                    imageUrl: "https://www.youtube.com/shorts/mVVlhaOaeQQ"
+                    imageUrl: "https://www.youtube.com/embed/mVVlhaOaeQQ"
                 },
                 {
                     title: "일기 작성 및 일기 목록 , 일기 자세히 보기",
                     items: [
-                        "일기 작성: 오늘 하루에 대한 일기를 작성할 수 있으며, “오늘의 감정”을 통해 자신이 느낀 오늘 하루의 감정을 선택하고, 사진을 추가하여 일기의 썸네일로 사용할 수 있고, 일기 제목과 내용을 작성하고 “오늘의 일기 저장하기” 버튼을 클릭하여 일기를 저장할 수 있습니다.",
-                        "일기 목록: 자신의 작성한 일기들을 최신순으로 볼 수 있으며, “커뮤니티에 공유” 버튼을 클릭하여 커뮤니티에 자신의 일기를 공유할 수 있고, “삭제” 버튼을 클릭하여 일기를 삭제할 수 있습니다.",
+                        "일기 작성: 오늘 하루에 대한 일기를 작성할 수 있으며, “오늘의 감정”을 통해 자신이 느낀 오늘 하루의 감정을 선택하고, 사진을 추가하여 일기의 썸네일로 사용할 수 있고, 일기 제목과 내용을 작성하고 “오늘의 일기 저장하기” 버튼을 클릭하여 일기를 저장할 수 있습니다.\n\n",
+                        "일기 목록: 자신의 작성한 일기들을 최신순으로 볼 수 있으며, “커뮤니티에 공유” 버튼을 클릭하여 커뮤니티에 자신의 일기를 공유할 수 있고, “삭제” 버튼을 클릭하여 일기를 삭제할 수 있습니다.\n\n",
                         "일기 자세히 보기: 일기 목록에서 일기를 클릭하게 되면, 제목과 내용, 언제 작성했는지, 그때의 감정, 내용은 몇자를 작성했는지가 나오게 됩니다. ( 사진이 있는 경우라면, 내용 위에 사진이 보이게 되고, 사진을 클릭하면, 사진을 자세히 볼 수 있게 됩니다. )"
                     ],
-                    imageUrl: "https://www.youtube.com/shorts/bogyxTg5Bds"
+                    imageUrl: "https://www.youtube.com/embed/bogyxTg5Bds"
                 },
                 {
                     title: "커뮤니티 탭",
                     items: [
-                        "자신이 작성한 일기를 커뮤니티에 공유를 하며, 서로의 일기를 공유하고, 소통할 수 있는 커뮤니티 기능을 개발하였습니다.",
+                        "자신이 작성한 일기를 커뮤니티에 공유를 하며, 서로의 일기를 공유하고, 소통할 수 있는 커뮤니티 기능을 개발하였습니다.\n\n",
                         "커뮤니티 탭은 최신순, 인기순, 각종 감정카테고리로 구성되어 있고, 글을 클릭하게 되면, 조회수, 댓글, 게시글 좋아요 수를 확인할 수 있고, 댓글을 작성하여 소통할 수 있게 되어있습니다."
                     ],
-                    imageUrl: "https://www.youtube.com/shorts/2PbvPAeawrU"
+                    imageUrl: "https://www.youtube.com/embed/2PbvPAeawrU"
                 },
                 {
                     title: "공유하기",
                     items: [
                         "일기를 공유하기 버튼을 클릭하여, “하루의 끝”을 모르는 사람들에게 공유를 할 수 있습니다."
                     ],
-                    imageUrl: "https://www.youtube.com/shorts/nn0hPVa2QRA"
+                    imageUrl: "https://www.youtube.com/embed/nn0hPVa2QRA"
                 },
                 {
                     title: "구글스토어 출시",
@@ -762,8 +769,8 @@ const basePortfolioData = {
                 }
             ],
             achievements: [
-                "먼저 개발을 진행하면서, 원래는 AWS에 있는 EC2, RDS, S3등을 사용하여, 서비스를 편하게 구축하였습니다. 하지만, 이번 프로젝트는 자체 서버 컴퓨터를 두어, EC2, RDS, S3등이 없이 직접 미니PC에 서버를 구축을 하며, 새로운 경험과 기술을 습득하게 되었습니다.",
-                "그리고, Java21 + SpringBoot3.x를 보통 사용하였다면, 이번에는 Kotlin + SpringBoot3.x를 사용하여, Null에 대한 안정성등을 확보를 할 수 있었습니다."
+                "먼저 개발을 진행하면서, 원래는 AWS에 있는 EC2, RDS, S3등을 사용하여, 서비스를 편하게 구축하였습니다. 하지만, 이번 프로젝트는 자체 서버 컴퓨터를 두어, EC2, RDS, S3등이 없이 직접 미니PC에 서버를 구축을 하며, 새로운 경험과 기술을 습득하게 되었습니다.\n\n",
+                "Java21 + SpringBoot3.x를 보통 사용하였다면, 이번에는 Kotlin + SpringBoot3.x를 사용하여, Null에 대한 안정성등을 확보를 할 수 있었습니다."
             ],
             githubUrl: "https://github.com/KR-TD",
             liveUrl: "https://haru2end.com",
@@ -2380,6 +2387,82 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$portfolio$2f$components$2f$u
 ;
 __turbopack_context__.n(__TURBOPACK__imported__module__$5b$project$5d2f$portfolio$2f$components$2f$ui$2f$dialog$2e$tsx__$5b$app$2d$rsc$5d$__$28$client__reference__proxy$29$__);
 }),
+"[project]/portfolio/components/ui/carousel.tsx [app-rsc] (client reference proxy) <module evaluation>", ((__turbopack_context__) => {
+"use strict";
+
+// This file is generated by next-core EcmascriptClientReferenceModule.
+__turbopack_context__.s([
+    "Carousel",
+    ()=>Carousel,
+    "CarouselContent",
+    ()=>CarouselContent,
+    "CarouselItem",
+    ()=>CarouselItem,
+    "CarouselNext",
+    ()=>CarouselNext,
+    "CarouselPrevious",
+    ()=>CarouselPrevious
+]);
+var __TURBOPACK__imported__module__$5b$project$5d2f$portfolio$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$7_react$2d$dom$40$19$2e$2$2e$1_react$40$19$2e$2$2e$1_$5f$react$40$19$2e$2$2e$1$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$server$2d$dom$2d$turbopack$2d$server$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/portfolio/node_modules/.pnpm/next@16.0.7_react-dom@19.2.1_react@19.2.1__react@19.2.1/node_modules/next/dist/server/route-modules/app-page/vendored/rsc/react-server-dom-turbopack-server.js [app-rsc] (ecmascript)");
+;
+const Carousel = (0, __TURBOPACK__imported__module__$5b$project$5d2f$portfolio$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$7_react$2d$dom$40$19$2e$2$2e$1_react$40$19$2e$2$2e$1_$5f$react$40$19$2e$2$2e$1$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$server$2d$dom$2d$turbopack$2d$server$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["registerClientReference"])(function() {
+    throw new Error("Attempted to call Carousel() from the server but Carousel is on the client. It's not possible to invoke a client function from the server, it can only be rendered as a Component or passed to props of a Client Component.");
+}, "[project]/portfolio/components/ui/carousel.tsx <module evaluation>", "Carousel");
+const CarouselContent = (0, __TURBOPACK__imported__module__$5b$project$5d2f$portfolio$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$7_react$2d$dom$40$19$2e$2$2e$1_react$40$19$2e$2$2e$1_$5f$react$40$19$2e$2$2e$1$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$server$2d$dom$2d$turbopack$2d$server$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["registerClientReference"])(function() {
+    throw new Error("Attempted to call CarouselContent() from the server but CarouselContent is on the client. It's not possible to invoke a client function from the server, it can only be rendered as a Component or passed to props of a Client Component.");
+}, "[project]/portfolio/components/ui/carousel.tsx <module evaluation>", "CarouselContent");
+const CarouselItem = (0, __TURBOPACK__imported__module__$5b$project$5d2f$portfolio$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$7_react$2d$dom$40$19$2e$2$2e$1_react$40$19$2e$2$2e$1_$5f$react$40$19$2e$2$2e$1$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$server$2d$dom$2d$turbopack$2d$server$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["registerClientReference"])(function() {
+    throw new Error("Attempted to call CarouselItem() from the server but CarouselItem is on the client. It's not possible to invoke a client function from the server, it can only be rendered as a Component or passed to props of a Client Component.");
+}, "[project]/portfolio/components/ui/carousel.tsx <module evaluation>", "CarouselItem");
+const CarouselNext = (0, __TURBOPACK__imported__module__$5b$project$5d2f$portfolio$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$7_react$2d$dom$40$19$2e$2$2e$1_react$40$19$2e$2$2e$1_$5f$react$40$19$2e$2$2e$1$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$server$2d$dom$2d$turbopack$2d$server$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["registerClientReference"])(function() {
+    throw new Error("Attempted to call CarouselNext() from the server but CarouselNext is on the client. It's not possible to invoke a client function from the server, it can only be rendered as a Component or passed to props of a Client Component.");
+}, "[project]/portfolio/components/ui/carousel.tsx <module evaluation>", "CarouselNext");
+const CarouselPrevious = (0, __TURBOPACK__imported__module__$5b$project$5d2f$portfolio$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$7_react$2d$dom$40$19$2e$2$2e$1_react$40$19$2e$2$2e$1_$5f$react$40$19$2e$2$2e$1$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$server$2d$dom$2d$turbopack$2d$server$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["registerClientReference"])(function() {
+    throw new Error("Attempted to call CarouselPrevious() from the server but CarouselPrevious is on the client. It's not possible to invoke a client function from the server, it can only be rendered as a Component or passed to props of a Client Component.");
+}, "[project]/portfolio/components/ui/carousel.tsx <module evaluation>", "CarouselPrevious");
+}),
+"[project]/portfolio/components/ui/carousel.tsx [app-rsc] (client reference proxy)", ((__turbopack_context__) => {
+"use strict";
+
+// This file is generated by next-core EcmascriptClientReferenceModule.
+__turbopack_context__.s([
+    "Carousel",
+    ()=>Carousel,
+    "CarouselContent",
+    ()=>CarouselContent,
+    "CarouselItem",
+    ()=>CarouselItem,
+    "CarouselNext",
+    ()=>CarouselNext,
+    "CarouselPrevious",
+    ()=>CarouselPrevious
+]);
+var __TURBOPACK__imported__module__$5b$project$5d2f$portfolio$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$7_react$2d$dom$40$19$2e$2$2e$1_react$40$19$2e$2$2e$1_$5f$react$40$19$2e$2$2e$1$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$server$2d$dom$2d$turbopack$2d$server$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/portfolio/node_modules/.pnpm/next@16.0.7_react-dom@19.2.1_react@19.2.1__react@19.2.1/node_modules/next/dist/server/route-modules/app-page/vendored/rsc/react-server-dom-turbopack-server.js [app-rsc] (ecmascript)");
+;
+const Carousel = (0, __TURBOPACK__imported__module__$5b$project$5d2f$portfolio$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$7_react$2d$dom$40$19$2e$2$2e$1_react$40$19$2e$2$2e$1_$5f$react$40$19$2e$2$2e$1$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$server$2d$dom$2d$turbopack$2d$server$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["registerClientReference"])(function() {
+    throw new Error("Attempted to call Carousel() from the server but Carousel is on the client. It's not possible to invoke a client function from the server, it can only be rendered as a Component or passed to props of a Client Component.");
+}, "[project]/portfolio/components/ui/carousel.tsx", "Carousel");
+const CarouselContent = (0, __TURBOPACK__imported__module__$5b$project$5d2f$portfolio$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$7_react$2d$dom$40$19$2e$2$2e$1_react$40$19$2e$2$2e$1_$5f$react$40$19$2e$2$2e$1$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$server$2d$dom$2d$turbopack$2d$server$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["registerClientReference"])(function() {
+    throw new Error("Attempted to call CarouselContent() from the server but CarouselContent is on the client. It's not possible to invoke a client function from the server, it can only be rendered as a Component or passed to props of a Client Component.");
+}, "[project]/portfolio/components/ui/carousel.tsx", "CarouselContent");
+const CarouselItem = (0, __TURBOPACK__imported__module__$5b$project$5d2f$portfolio$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$7_react$2d$dom$40$19$2e$2$2e$1_react$40$19$2e$2$2e$1_$5f$react$40$19$2e$2$2e$1$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$server$2d$dom$2d$turbopack$2d$server$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["registerClientReference"])(function() {
+    throw new Error("Attempted to call CarouselItem() from the server but CarouselItem is on the client. It's not possible to invoke a client function from the server, it can only be rendered as a Component or passed to props of a Client Component.");
+}, "[project]/portfolio/components/ui/carousel.tsx", "CarouselItem");
+const CarouselNext = (0, __TURBOPACK__imported__module__$5b$project$5d2f$portfolio$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$7_react$2d$dom$40$19$2e$2$2e$1_react$40$19$2e$2$2e$1_$5f$react$40$19$2e$2$2e$1$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$server$2d$dom$2d$turbopack$2d$server$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["registerClientReference"])(function() {
+    throw new Error("Attempted to call CarouselNext() from the server but CarouselNext is on the client. It's not possible to invoke a client function from the server, it can only be rendered as a Component or passed to props of a Client Component.");
+}, "[project]/portfolio/components/ui/carousel.tsx", "CarouselNext");
+const CarouselPrevious = (0, __TURBOPACK__imported__module__$5b$project$5d2f$portfolio$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$7_react$2d$dom$40$19$2e$2$2e$1_react$40$19$2e$2$2e$1_$5f$react$40$19$2e$2$2e$1$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$server$2d$dom$2d$turbopack$2d$server$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["registerClientReference"])(function() {
+    throw new Error("Attempted to call CarouselPrevious() from the server but CarouselPrevious is on the client. It's not possible to invoke a client function from the server, it can only be rendered as a Component or passed to props of a Client Component.");
+}, "[project]/portfolio/components/ui/carousel.tsx", "CarouselPrevious");
+}),
+"[project]/portfolio/components/ui/carousel.tsx [app-rsc] (ecmascript)", ((__turbopack_context__) => {
+"use strict";
+
+var __TURBOPACK__imported__module__$5b$project$5d2f$portfolio$2f$components$2f$ui$2f$carousel$2e$tsx__$5b$app$2d$rsc$5d$__$28$client__reference__proxy$29$__$3c$module__evaluation$3e$__ = __turbopack_context__.i("[project]/portfolio/components/ui/carousel.tsx [app-rsc] (client reference proxy) <module evaluation>");
+var __TURBOPACK__imported__module__$5b$project$5d2f$portfolio$2f$components$2f$ui$2f$carousel$2e$tsx__$5b$app$2d$rsc$5d$__$28$client__reference__proxy$29$__ = __turbopack_context__.i("[project]/portfolio/components/ui/carousel.tsx [app-rsc] (client reference proxy)");
+;
+__turbopack_context__.n(__TURBOPACK__imported__module__$5b$project$5d2f$portfolio$2f$components$2f$ui$2f$carousel$2e$tsx__$5b$app$2d$rsc$5d$__$28$client__reference__proxy$29$__);
+}),
 "[project]/portfolio/components/portfolio/image-preview-dialog.tsx [app-rsc] (ecmascript)", ((__turbopack_context__) => {
 "use strict";
 
@@ -2390,6 +2473,8 @@ __turbopack_context__.s([
 var __TURBOPACK__imported__module__$5b$project$5d2f$portfolio$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$7_react$2d$dom$40$19$2e$2$2e$1_react$40$19$2e$2$2e$1_$5f$react$40$19$2e$2$2e$1$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/portfolio/node_modules/.pnpm/next@16.0.7_react-dom@19.2.1_react@19.2.1__react@19.2.1/node_modules/next/dist/server/route-modules/app-page/vendored/rsc/react-jsx-dev-runtime.js [app-rsc] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$portfolio$2f$components$2f$ui$2f$dialog$2e$tsx__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/portfolio/components/ui/dialog.tsx [app-rsc] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$portfolio$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$7_react$2d$dom$40$19$2e$2$2e$1_react$40$19$2e$2$2e$1_$5f$react$40$19$2e$2$2e$1$2f$node_modules$2f$next$2f$image$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/portfolio/node_modules/.pnpm/next@16.0.7_react-dom@19.2.1_react@19.2.1__react@19.2.1/node_modules/next/image.js [app-rsc] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$portfolio$2f$components$2f$ui$2f$carousel$2e$tsx__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/portfolio/components/ui/carousel.tsx [app-rsc] (ecmascript)");
+;
 ;
 ;
 ;
@@ -2401,7 +2486,7 @@ function ImagePreviewDialog({ imageUrl, altText, children }) {
                 children: children
             }, void 0, false, {
                 fileName: "[project]/portfolio/components/portfolio/image-preview-dialog.tsx",
-                lineNumber: 23,
+                lineNumber: 30,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$portfolio$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$7_react$2d$dom$40$19$2e$2$2e$1_react$40$19$2e$2$2e$1_$5f$react$40$19$2e$2$2e$1$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$portfolio$2f$components$2f$ui$2f$dialog$2e$tsx__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["DialogContent"], {
@@ -2412,15 +2497,62 @@ function ImagePreviewDialog({ imageUrl, altText, children }) {
                             children: altText
                         }, void 0, false, {
                             fileName: "[project]/portfolio/components/portfolio/image-preview-dialog.tsx",
-                            lineNumber: 26,
+                            lineNumber: 33,
                             columnNumber: 11
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/portfolio/components/portfolio/image-preview-dialog.tsx",
-                        lineNumber: 25,
+                        lineNumber: 32,
                         columnNumber: 9
                     }, this),
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$portfolio$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$7_react$2d$dom$40$19$2e$2$2e$1_react$40$19$2e$2$2e$1_$5f$react$40$19$2e$2$2e$1$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                    Array.isArray(imageUrl) ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$portfolio$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$7_react$2d$dom$40$19$2e$2$2e$1_react$40$19$2e$2$2e$1_$5f$react$40$19$2e$2$2e$1$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$portfolio$2f$components$2f$ui$2f$carousel$2e$tsx__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["Carousel"], {
+                        className: "w-full",
+                        children: [
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$portfolio$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$7_react$2d$dom$40$19$2e$2$2e$1_react$40$19$2e$2$2e$1_$5f$react$40$19$2e$2$2e$1$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$portfolio$2f$components$2f$ui$2f$carousel$2e$tsx__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["CarouselContent"], {
+                                children: imageUrl.map((url, index)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$portfolio$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$7_react$2d$dom$40$19$2e$2$2e$1_react$40$19$2e$2$2e$1_$5f$react$40$19$2e$2$2e$1$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$portfolio$2f$components$2f$ui$2f$carousel$2e$tsx__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["CarouselItem"], {
+                                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$portfolio$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$7_react$2d$dom$40$19$2e$2$2e$1_react$40$19$2e$2$2e$1_$5f$react$40$19$2e$2$2e$1$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                            className: "relative h-[80vh]",
+                                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$portfolio$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$7_react$2d$dom$40$19$2e$2$2e$1_react$40$19$2e$2$2e$1_$5f$react$40$19$2e$2$2e$1$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$portfolio$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$7_react$2d$dom$40$19$2e$2$2e$1_react$40$19$2e$2$2e$1_$5f$react$40$19$2e$2$2e$1$2f$node_modules$2f$next$2f$image$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["default"], {
+                                                src: url,
+                                                alt: `${altText} - ${index + 1}`,
+                                                layout: "fill",
+                                                objectFit: "contain"
+                                            }, void 0, false, {
+                                                fileName: "[project]/portfolio/components/portfolio/image-preview-dialog.tsx",
+                                                lineNumber: 41,
+                                                columnNumber: 21
+                                            }, this)
+                                        }, void 0, false, {
+                                            fileName: "[project]/portfolio/components/portfolio/image-preview-dialog.tsx",
+                                            lineNumber: 40,
+                                            columnNumber: 19
+                                        }, this)
+                                    }, index, false, {
+                                        fileName: "[project]/portfolio/components/portfolio/image-preview-dialog.tsx",
+                                        lineNumber: 39,
+                                        columnNumber: 17
+                                    }, this))
+                            }, void 0, false, {
+                                fileName: "[project]/portfolio/components/portfolio/image-preview-dialog.tsx",
+                                lineNumber: 37,
+                                columnNumber: 13
+                            }, this),
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$portfolio$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$7_react$2d$dom$40$19$2e$2$2e$1_react$40$19$2e$2$2e$1_$5f$react$40$19$2e$2$2e$1$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$portfolio$2f$components$2f$ui$2f$carousel$2e$tsx__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["CarouselPrevious"], {}, void 0, false, {
+                                fileName: "[project]/portfolio/components/portfolio/image-preview-dialog.tsx",
+                                lineNumber: 51,
+                                columnNumber: 13
+                            }, this),
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$portfolio$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$7_react$2d$dom$40$19$2e$2$2e$1_react$40$19$2e$2$2e$1_$5f$react$40$19$2e$2$2e$1$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$portfolio$2f$components$2f$ui$2f$carousel$2e$tsx__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["CarouselNext"], {}, void 0, false, {
+                                fileName: "[project]/portfolio/components/portfolio/image-preview-dialog.tsx",
+                                lineNumber: 52,
+                                columnNumber: 13
+                            }, this)
+                        ]
+                    }, void 0, true, {
+                        fileName: "[project]/portfolio/components/portfolio/image-preview-dialog.tsx",
+                        lineNumber: 36,
+                        columnNumber: 11
+                    }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$portfolio$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$7_react$2d$dom$40$19$2e$2$2e$1_react$40$19$2e$2$2e$1_$5f$react$40$19$2e$2$2e$1$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                         className: "relative h-[80vh]",
                         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$portfolio$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$7_react$2d$dom$40$19$2e$2$2e$1_react$40$19$2e$2$2e$1_$5f$react$40$19$2e$2$2e$1$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$portfolio$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$7_react$2d$dom$40$19$2e$2$2e$1_react$40$19$2e$2$2e$1_$5f$react$40$19$2e$2$2e$1$2f$node_modules$2f$next$2f$image$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["default"], {
                             src: imageUrl,
@@ -2429,24 +2561,24 @@ function ImagePreviewDialog({ imageUrl, altText, children }) {
                             objectFit: "contain"
                         }, void 0, false, {
                             fileName: "[project]/portfolio/components/portfolio/image-preview-dialog.tsx",
-                            lineNumber: 29,
-                            columnNumber: 11
+                            lineNumber: 56,
+                            columnNumber: 13
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/portfolio/components/portfolio/image-preview-dialog.tsx",
-                        lineNumber: 28,
-                        columnNumber: 9
+                        lineNumber: 55,
+                        columnNumber: 11
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/portfolio/components/portfolio/image-preview-dialog.tsx",
-                lineNumber: 24,
+                lineNumber: 31,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/portfolio/components/portfolio/image-preview-dialog.tsx",
-        lineNumber: 22,
+        lineNumber: 29,
         columnNumber: 5
     }, this);
 }
@@ -2483,7 +2615,24 @@ function ProjectCard({ project }) {
         children: [
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$portfolio$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$7_react$2d$dom$40$19$2e$2$2e$1_react$40$19$2e$2$2e$1_$5f$react$40$19$2e$2$2e$1$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$portfolio$2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["CardHeader"], {
                 children: [
-                    project.imageUrl && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$portfolio$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$7_react$2d$dom$40$19$2e$2$2e$1_react$40$19$2e$2$2e$1_$5f$react$40$19$2e$2$2e$1$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$portfolio$2f$components$2f$portfolio$2f$image$2d$preview$2d$dialog$2e$tsx__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["ImagePreviewDialog"], {
+                    project.imageUrl && (typeof project.imageUrl === "string" && project.imageUrl.includes("youtube.com/embed") ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$portfolio$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$7_react$2d$dom$40$19$2e$2$2e$1_react$40$19$2e$2$2e$1_$5f$react$40$19$2e$2$2e$1$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                        className: "relative w-full h-48 mb-4",
+                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$portfolio$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$7_react$2d$dom$40$19$2e$2$2e$1_react$40$19$2e$2$2e$1_$5f$react$40$19$2e$2$2e$1$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("iframe", {
+                            src: project.imageUrl,
+                            title: project.name,
+                            className: "absolute top-0 left-0 w-full h-full rounded-t-lg",
+                            allow: "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture",
+                            allowFullScreen: true
+                        }, void 0, false, {
+                            fileName: "[project]/portfolio/components/portfolio/project-card.tsx",
+                            lineNumber: 21,
+                            columnNumber: 15
+                        }, this)
+                    }, void 0, false, {
+                        fileName: "[project]/portfolio/components/portfolio/project-card.tsx",
+                        lineNumber: 20,
+                        columnNumber: 13
+                    }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$portfolio$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$7_react$2d$dom$40$19$2e$2$2e$1_react$40$19$2e$2$2e$1_$5f$react$40$19$2e$2$2e$1$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$portfolio$2f$components$2f$portfolio$2f$image$2d$preview$2d$dialog$2e$tsx__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["ImagePreviewDialog"], {
                         imageUrl: project.imageUrl,
                         altText: project.name,
                         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$portfolio$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$7_react$2d$dom$40$19$2e$2$2e$1_react$40$19$2e$2$2e$1_$5f$react$40$19$2e$2$2e$1$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2496,19 +2645,19 @@ function ProjectCard({ project }) {
                                 className: "rounded-t-lg"
                             }, void 0, false, {
                                 fileName: "[project]/portfolio/components/portfolio/project-card.tsx",
-                                lineNumber: 24,
-                                columnNumber: 15
+                                lineNumber: 32,
+                                columnNumber: 17
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/portfolio/components/portfolio/project-card.tsx",
-                            lineNumber: 23,
-                            columnNumber: 13
+                            lineNumber: 31,
+                            columnNumber: 15
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/portfolio/components/portfolio/project-card.tsx",
-                        lineNumber: 19,
-                        columnNumber: 11
-                    }, this),
+                        lineNumber: 30,
+                        columnNumber: 13
+                    }, this)),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$portfolio$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$7_react$2d$dom$40$19$2e$2$2e$1_react$40$19$2e$2$2e$1_$5f$react$40$19$2e$2$2e$1$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$portfolio$2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["CardTitle"], {
                         className: "text-xl font-semibold text-slate-800 flex items-center",
                         children: [
@@ -2517,21 +2666,21 @@ function ProjectCard({ project }) {
                                 children: project.icon
                             }, void 0, false, {
                                 fileName: "[project]/portfolio/components/portfolio/project-card.tsx",
-                                lineNumber: 35,
+                                lineNumber: 43,
                                 columnNumber: 28
                             }, this),
                             project.name
                         ]
                     }, void 0, true, {
                         fileName: "[project]/portfolio/components/portfolio/project-card.tsx",
-                        lineNumber: 34,
+                        lineNumber: 42,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$portfolio$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$7_react$2d$dom$40$19$2e$2$2e$1_react$40$19$2e$2$2e$1_$5f$react$40$19$2e$2$2e$1$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$portfolio$2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["CardDescription"], {
                         children: project.shortDescription
                     }, void 0, false, {
                         fileName: "[project]/portfolio/components/portfolio/project-card.tsx",
-                        lineNumber: 38,
+                        lineNumber: 46,
                         columnNumber: 9
                     }, this),
                     project.period && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$portfolio$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$7_react$2d$dom$40$19$2e$2$2e$1_react$40$19$2e$2$2e$1_$5f$react$40$19$2e$2$2e$1$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -2539,7 +2688,7 @@ function ProjectCard({ project }) {
                         children: project.period
                     }, void 0, false, {
                         fileName: "[project]/portfolio/components/portfolio/project-card.tsx",
-                        lineNumber: 39,
+                        lineNumber: 47,
                         columnNumber: 28
                     }, this),
                     project.role && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$portfolio$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$7_react$2d$dom$40$19$2e$2$2e$1_react$40$19$2e$2$2e$1_$5f$react$40$19$2e$2$2e$1$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -2547,7 +2696,7 @@ function ProjectCard({ project }) {
                         children: project.role
                     }, void 0, false, {
                         fileName: "[project]/portfolio/components/portfolio/project-card.tsx",
-                        lineNumber: 40,
+                        lineNumber: 48,
                         columnNumber: 26
                     }, this)
                 ]
@@ -2567,12 +2716,12 @@ function ProjectCard({ project }) {
                                 children: tag
                             }, tag, false, {
                                 fileName: "[project]/portfolio/components/portfolio/project-card.tsx",
-                                lineNumber: 45,
+                                lineNumber: 53,
                                 columnNumber: 13
                             }, this))
                     }, void 0, false, {
                         fileName: "[project]/portfolio/components/portfolio/project-card.tsx",
-                        lineNumber: 43,
+                        lineNumber: 51,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$portfolio$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$7_react$2d$dom$40$19$2e$2$2e$1_react$40$19$2e$2$2e$1_$5f$react$40$19$2e$2$2e$1$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$portfolio$2f$components$2f$ui$2f$accordion$2e$tsx__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["Accordion"], {
@@ -2587,7 +2736,7 @@ function ProjectCard({ project }) {
                                     children: "상세 정보 보기"
                                 }, void 0, false, {
                                     fileName: "[project]/portfolio/components/portfolio/project-card.tsx",
-                                    lineNumber: 53,
+                                    lineNumber: 61,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$portfolio$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$7_react$2d$dom$40$19$2e$2$2e$1_react$40$19$2e$2$2e$1_$5f$react$40$19$2e$2$2e$1$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$portfolio$2f$components$2f$ui$2f$accordion$2e$tsx__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["AccordionContent"], {
@@ -2599,7 +2748,7 @@ function ProjectCard({ project }) {
                                                     children: "개요:"
                                                 }, void 0, false, {
                                                     fileName: "[project]/portfolio/components/portfolio/project-card.tsx",
-                                                    lineNumber: 57,
+                                                    lineNumber: 65,
                                                     columnNumber: 19
                                                 }, this),
                                                 " ",
@@ -2607,7 +2756,7 @@ function ProjectCard({ project }) {
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/portfolio/components/portfolio/project-card.tsx",
-                                            lineNumber: 56,
+                                            lineNumber: 64,
                                             columnNumber: 17
                                         }, this),
                                         project.techStack && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$portfolio$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$7_react$2d$dom$40$19$2e$2$2e$1_react$40$19$2e$2$2e$1_$5f$react$40$19$2e$2$2e$1$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2616,7 +2765,7 @@ function ProjectCard({ project }) {
                                                     children: "기술 스택:"
                                                 }, void 0, false, {
                                                     fileName: "[project]/portfolio/components/portfolio/project-card.tsx",
-                                                    lineNumber: 62,
+                                                    lineNumber: 70,
                                                     columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$portfolio$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$7_react$2d$dom$40$19$2e$2$2e$1_react$40$19$2e$2$2e$1_$5f$react$40$19$2e$2$2e$1$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("ul", {
@@ -2625,18 +2774,18 @@ function ProjectCard({ project }) {
                                                             children: tech
                                                         }, tech, false, {
                                                             fileName: "[project]/portfolio/components/portfolio/project-card.tsx",
-                                                            lineNumber: 65,
+                                                            lineNumber: 73,
                                                             columnNumber: 23
                                                         }, this))
                                                 }, void 0, false, {
                                                     fileName: "[project]/portfolio/components/portfolio/project-card.tsx",
-                                                    lineNumber: 63,
+                                                    lineNumber: 71,
                                                     columnNumber: 19
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/portfolio/components/portfolio/project-card.tsx",
-                                            lineNumber: 61,
+                                            lineNumber: 69,
                                             columnNumber: 17
                                         }, this),
                                         project.teamComposition && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$portfolio$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$7_react$2d$dom$40$19$2e$2$2e$1_react$40$19$2e$2$2e$1_$5f$react$40$19$2e$2$2e$1$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2645,7 +2794,7 @@ function ProjectCard({ project }) {
                                                     children: "팀 구성:"
                                                 }, void 0, false, {
                                                     fileName: "[project]/portfolio/components/portfolio/project-card.tsx",
-                                                    lineNumber: 72,
+                                                    lineNumber: 80,
                                                     columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$portfolio$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$7_react$2d$dom$40$19$2e$2$2e$1_react$40$19$2e$2$2e$1_$5f$react$40$19$2e$2$2e$1$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("ul", {
@@ -2654,18 +2803,18 @@ function ProjectCard({ project }) {
                                                             children: member
                                                         }, member, false, {
                                                             fileName: "[project]/portfolio/components/portfolio/project-card.tsx",
-                                                            lineNumber: 75,
+                                                            lineNumber: 83,
                                                             columnNumber: 23
                                                         }, this))
                                                 }, void 0, false, {
                                                     fileName: "[project]/portfolio/components/portfolio/project-card.tsx",
-                                                    lineNumber: 73,
+                                                    lineNumber: 81,
                                                     columnNumber: 19
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/portfolio/components/portfolio/project-card.tsx",
-                                            lineNumber: 71,
+                                            lineNumber: 79,
                                             columnNumber: 17
                                         }, this),
                                         project.tasks?.map((task, idx)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$portfolio$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$7_react$2d$dom$40$19$2e$2$2e$1_react$40$19$2e$2$2e$1_$5f$react$40$19$2e$2$2e$1$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2677,53 +2826,95 @@ function ProjectCard({ project }) {
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/portfolio/components/portfolio/project-card.tsx",
-                                                        lineNumber: 82,
+                                                        lineNumber: 90,
                                                         columnNumber: 19
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$portfolio$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$7_react$2d$dom$40$19$2e$2$2e$1_react$40$19$2e$2$2e$1_$5f$react$40$19$2e$2$2e$1$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("ul", {
                                                         className: "list-disc list-inside ml-4",
                                                         children: task.items.map((item)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$portfolio$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$7_react$2d$dom$40$19$2e$2$2e$1_react$40$19$2e$2$2e$1_$5f$react$40$19$2e$2$2e$1$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
+                                                                className: "whitespace-pre-line",
                                                                 children: item
                                                             }, item, false, {
                                                                 fileName: "[project]/portfolio/components/portfolio/project-card.tsx",
-                                                                lineNumber: 85,
+                                                                lineNumber: 93,
                                                                 columnNumber: 23
                                                             }, this))
                                                     }, void 0, false, {
                                                         fileName: "[project]/portfolio/components/portfolio/project-card.tsx",
-                                                        lineNumber: 83,
+                                                        lineNumber: 91,
                                                         columnNumber: 19
                                                     }, this),
-                                                    task.imageUrl && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$portfolio$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$7_react$2d$dom$40$19$2e$2$2e$1_react$40$19$2e$2$2e$1_$5f$react$40$19$2e$2$2e$1$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$portfolio$2f$components$2f$portfolio$2f$image$2d$preview$2d$dialog$2e$tsx__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["ImagePreviewDialog"], {
+                                                    task.imageUrl && (typeof task.imageUrl === "string" && task.imageUrl.includes("youtube.com/embed") ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$portfolio$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$7_react$2d$dom$40$19$2e$2$2e$1_react$40$19$2e$2$2e$1_$5f$react$40$19$2e$2$2e$1$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                        className: "relative w-[200px] h-[150px] mt-2 rounded overflow-hidden",
+                                                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$portfolio$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$7_react$2d$dom$40$19$2e$2$2e$1_react$40$19$2e$2$2e$1_$5f$react$40$19$2e$2$2e$1$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("iframe", {
+                                                            src: task.imageUrl,
+                                                            title: task.title,
+                                                            className: "absolute top-0 left-0 w-full h-full",
+                                                            allow: "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture",
+                                                            allowFullScreen: true
+                                                        }, void 0, false, {
+                                                            fileName: "[project]/portfolio/components/portfolio/project-card.tsx",
+                                                            lineNumber: 99,
+                                                            columnNumber: 25
+                                                        }, this)
+                                                    }, void 0, false, {
+                                                        fileName: "[project]/portfolio/components/portfolio/project-card.tsx",
+                                                        lineNumber: 98,
+                                                        columnNumber: 23
+                                                    }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$portfolio$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$7_react$2d$dom$40$19$2e$2$2e$1_react$40$19$2e$2$2e$1_$5f$react$40$19$2e$2$2e$1$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$portfolio$2f$components$2f$portfolio$2f$image$2d$preview$2d$dialog$2e$tsx__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["ImagePreviewDialog"], {
                                                         imageUrl: task.imageUrl,
                                                         altText: task.title,
-                                                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$portfolio$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$7_react$2d$dom$40$19$2e$2$2e$1_react$40$19$2e$2$2e$1_$5f$react$40$19$2e$2$2e$1$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                        children: Array.isArray(task.imageUrl) ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$portfolio$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$7_react$2d$dom$40$19$2e$2$2e$1_react$40$19$2e$2$2e$1_$5f$react$40$19$2e$2$2e$1$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                            className: "flex gap-2 mt-2 cursor-pointer",
+                                                            children: task.imageUrl.map((url, index)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$portfolio$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$7_react$2d$dom$40$19$2e$2$2e$1_react$40$19$2e$2$2e$1_$5f$react$40$19$2e$2$2e$1$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                    className: "relative w-24 h-16 rounded overflow-hidden",
+                                                                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$portfolio$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$7_react$2d$dom$40$19$2e$2$2e$1_react$40$19$2e$2$2e$1_$5f$react$40$19$2e$2$2e$1$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$portfolio$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$7_react$2d$dom$40$19$2e$2$2e$1_react$40$19$2e$2$2e$1_$5f$react$40$19$2e$2$2e$1$2f$node_modules$2f$next$2f$image$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["default"], {
+                                                                        src: url,
+                                                                        alt: `${task.title} ${index + 1}`,
+                                                                        layout: "fill",
+                                                                        objectFit: "cover",
+                                                                        className: "transition-transform duration-300 hover:scale-110"
+                                                                    }, void 0, false, {
+                                                                        fileName: "[project]/portfolio/components/portfolio/project-card.tsx",
+                                                                        lineNumber: 113,
+                                                                        columnNumber: 33
+                                                                    }, this)
+                                                                }, index, false, {
+                                                                    fileName: "[project]/portfolio/components/portfolio/project-card.tsx",
+                                                                    lineNumber: 112,
+                                                                    columnNumber: 31
+                                                                }, this))
+                                                        }, void 0, false, {
+                                                            fileName: "[project]/portfolio/components/portfolio/project-card.tsx",
+                                                            lineNumber: 110,
+                                                            columnNumber: 27
+                                                        }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$portfolio$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$7_react$2d$dom$40$19$2e$2$2e$1_react$40$19$2e$2$2e$1_$5f$react$40$19$2e$2$2e$1$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                             className: "relative w-[200px] h-[150px] mt-2 rounded cursor-pointer overflow-hidden",
                                                             children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$portfolio$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$7_react$2d$dom$40$19$2e$2$2e$1_react$40$19$2e$2$2e$1_$5f$react$40$19$2e$2$2e$1$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$portfolio$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$7_react$2d$dom$40$19$2e$2$2e$1_react$40$19$2e$2$2e$1_$5f$react$40$19$2e$2$2e$1$2f$node_modules$2f$next$2f$image$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["default"], {
-                                                                src: task.imageUrl || "/placeholder.svg",
+                                                                src: task.imageUrl,
                                                                 alt: task.title,
                                                                 layout: "fill",
                                                                 objectFit: "cover",
                                                                 className: "transition-transform duration-300 hover:scale-110"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/portfolio/components/portfolio/project-card.tsx",
-                                                                lineNumber: 94,
-                                                                columnNumber: 25
+                                                                lineNumber: 125,
+                                                                columnNumber: 29
                                                             }, this)
                                                         }, void 0, false, {
                                                             fileName: "[project]/portfolio/components/portfolio/project-card.tsx",
-                                                            lineNumber: 93,
-                                                            columnNumber: 23
+                                                            lineNumber: 124,
+                                                            columnNumber: 27
                                                         }, this)
                                                     }, void 0, false, {
                                                         fileName: "[project]/portfolio/components/portfolio/project-card.tsx",
-                                                        lineNumber: 89,
-                                                        columnNumber: 21
-                                                    }, this)
+                                                        lineNumber: 108,
+                                                        columnNumber: 23
+                                                    }, this))
                                                 ]
                                             }, idx, true, {
                                                 fileName: "[project]/portfolio/components/portfolio/project-card.tsx",
-                                                lineNumber: 81,
+                                                lineNumber: 89,
                                                 columnNumber: 17
                                             }, this)),
                                         project.achievements && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$portfolio$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$7_react$2d$dom$40$19$2e$2$2e$1_react$40$19$2e$2$2e$1_$5f$react$40$19$2e$2$2e$1$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2732,7 +2923,7 @@ function ProjectCard({ project }) {
                                                     children: "주요 성과:"
                                                 }, void 0, false, {
                                                     fileName: "[project]/portfolio/components/portfolio/project-card.tsx",
-                                                    lineNumber: 108,
+                                                    lineNumber: 140,
                                                     columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$portfolio$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$7_react$2d$dom$40$19$2e$2$2e$1_react$40$19$2e$2$2e$1_$5f$react$40$19$2e$2$2e$1$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("ul", {
@@ -2741,41 +2932,41 @@ function ProjectCard({ project }) {
                                                             children: ach
                                                         }, ach, false, {
                                                             fileName: "[project]/portfolio/components/portfolio/project-card.tsx",
-                                                            lineNumber: 111,
+                                                            lineNumber: 143,
                                                             columnNumber: 23
                                                         }, this))
                                                 }, void 0, false, {
                                                     fileName: "[project]/portfolio/components/portfolio/project-card.tsx",
-                                                    lineNumber: 109,
+                                                    lineNumber: 141,
                                                     columnNumber: 19
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/portfolio/components/portfolio/project-card.tsx",
-                                            lineNumber: 107,
+                                            lineNumber: 139,
                                             columnNumber: 17
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/portfolio/components/portfolio/project-card.tsx",
-                                    lineNumber: 54,
+                                    lineNumber: 62,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/portfolio/components/portfolio/project-card.tsx",
-                            lineNumber: 52,
+                            lineNumber: 60,
                             columnNumber: 11
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/portfolio/components/portfolio/project-card.tsx",
-                        lineNumber: 51,
+                        lineNumber: 59,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/portfolio/components/portfolio/project-card.tsx",
-                lineNumber: 42,
+                lineNumber: 50,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$portfolio$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$7_react$2d$dom$40$19$2e$2$2e$1_react$40$19$2e$2$2e$1_$5f$react$40$19$2e$2$2e$1$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$portfolio$2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["CardFooter"], {
@@ -2792,12 +2983,12 @@ function ProjectCard({ project }) {
                                 className: "h-5 w-5 text-slate-500 hover:text-yellow-600"
                             }, void 0, false, {
                                 fileName: "[project]/portfolio/components/portfolio/project-card.tsx",
-                                lineNumber: 124,
+                                lineNumber: 156,
                                 columnNumber: 15
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/portfolio/components/portfolio/project-card.tsx",
-                            lineNumber: 123,
+                            lineNumber: 155,
                             columnNumber: 13
                         }, this),
                         project.githubUrl && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$portfolio$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$7_react$2d$dom$40$19$2e$2$2e$1_react$40$19$2e$2$2e$1_$5f$react$40$19$2e$2$2e$1$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$portfolio$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$7_react$2d$dom$40$19$2e$2$2e$1_react$40$19$2e$2$2e$1_$5f$react$40$19$2e$2$2e$1$2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$react$2d$server$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["default"], {
@@ -2809,12 +3000,12 @@ function ProjectCard({ project }) {
                                 className: "h-5 w-5 text-slate-500 hover:text-yellow-600"
                             }, void 0, false, {
                                 fileName: "[project]/portfolio/components/portfolio/project-card.tsx",
-                                lineNumber: 129,
+                                lineNumber: 161,
                                 columnNumber: 15
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/portfolio/components/portfolio/project-card.tsx",
-                            lineNumber: 128,
+                            lineNumber: 160,
                             columnNumber: 13
                         }, this),
                         project.figmaUrl && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$portfolio$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$7_react$2d$dom$40$19$2e$2$2e$1_react$40$19$2e$2$2e$1_$5f$react$40$19$2e$2$2e$1$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$portfolio$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$7_react$2d$dom$40$19$2e$2$2e$1_react$40$19$2e$2$2e$1_$5f$react$40$19$2e$2$2e$1$2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$react$2d$server$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["default"], {
@@ -2826,12 +3017,12 @@ function ProjectCard({ project }) {
                                 className: "h-5 w-5 text-slate-500 hover:text-yellow-600"
                             }, void 0, false, {
                                 fileName: "[project]/portfolio/components/portfolio/project-card.tsx",
-                                lineNumber: 134,
+                                lineNumber: 166,
                                 columnNumber: 15
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/portfolio/components/portfolio/project-card.tsx",
-                            lineNumber: 133,
+                            lineNumber: 165,
                             columnNumber: 13
                         }, this),
                         project.notionUrl && project.notionUrl !== "노션 비공개" && project.notionUrl.trim() !== "" && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$portfolio$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$7_react$2d$dom$40$19$2e$2$2e$1_react$40$19$2e$2$2e$1_$5f$react$40$19$2e$2$2e$1$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$portfolio$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$0$2e$7_react$2d$dom$40$19$2e$2$2e$1_react$40$19$2e$2$2e$1_$5f$react$40$19$2e$2$2e$1$2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$react$2d$server$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["default"], {
@@ -2843,23 +3034,23 @@ function ProjectCard({ project }) {
                                 className: "h-5 w-5 text-slate-500 hover:text-yellow-600"
                             }, void 0, false, {
                                 fileName: "[project]/portfolio/components/portfolio/project-card.tsx",
-                                lineNumber: 139,
+                                lineNumber: 171,
                                 columnNumber: 15
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/portfolio/components/portfolio/project-card.tsx",
-                            lineNumber: 138,
+                            lineNumber: 170,
                             columnNumber: 13
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/portfolio/components/portfolio/project-card.tsx",
-                    lineNumber: 121,
+                    lineNumber: 153,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/portfolio/components/portfolio/project-card.tsx",
-                lineNumber: 120,
+                lineNumber: 152,
                 columnNumber: 7
             }, this)
         ]
@@ -3675,4 +3866,4 @@ __turbopack_context__.n(__turbopack_context__.i("[project]/portfolio/app/page.ts
 }),
 ];
 
-//# sourceMappingURL=%5Broot-of-the-server%5D__37a5fb92._.js.map
+//# sourceMappingURL=%5Broot-of-the-server%5D__2dc35cf7._.js.map
