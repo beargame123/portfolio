@@ -4,7 +4,8 @@ import type { Project } from "@/app/data"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
 import { Badge } from "@/components/ui/badge"
-import { ExternalLink, Github, FileText, Video } from "lucide-react" // Assuming Video for Figma
+import { ExternalLink, Github, FileText, Figma } from "lucide-react"
+import { ImagePreviewDialog } from "./image-preview-dialog"
 
 interface ProjectCardProps {
   project: Project
@@ -12,18 +13,23 @@ interface ProjectCardProps {
 
 export function ProjectCard({ project }: ProjectCardProps) {
   return (
-    <Card className="shadow-lg flex flex-col h-full">
+    <Card className="shadow-lg flex flex-col">
       <CardHeader>
         {project.imageUrl && (
-          <div className="relative w-full h-48 mb-4">
-            <Image
-              src={project.imageUrl || "/placeholder.svg"}
-              alt={project.name}
-              layout="fill"
-              objectFit="cover"
-              className="rounded-t-lg"
-            />
-          </div>
+          <ImagePreviewDialog
+            imageUrl={project.imageUrl}
+            altText={project.name}
+          >
+            <div className="relative w-full h-48 mb-4 cursor-pointer">
+              <Image
+                src={project.imageUrl || "/placeholder.svg"}
+                alt={project.name}
+                layout="fill"
+                objectFit="cover"
+                className="rounded-t-lg"
+              />
+            </div>
+          </ImagePreviewDialog>
         )}
         <CardTitle className="text-xl font-semibold text-slate-800 flex items-center">
           {project.icon && <span className="mr-2 text-2xl">{project.icon}</span>}
@@ -80,13 +86,20 @@ export function ProjectCard({ project }: ProjectCardProps) {
                     ))}
                   </ul>
                   {task.imageUrl && (
-                    <Image
-                      src={task.imageUrl || "/placeholder.svg"}
-                      alt={task.title}
-                      width={200}
-                      height={150}
-                      className="mt-2 rounded"
-                    />
+                    <ImagePreviewDialog
+                      imageUrl={task.imageUrl}
+                      altText={task.title}
+                    >
+                      <div className="relative w-[200px] h-[150px] mt-2 rounded cursor-pointer overflow-hidden">
+                        <Image
+                          src={task.imageUrl || "/placeholder.svg"}
+                          alt={task.title}
+                          layout="fill"
+                          objectFit="cover"
+                          className="transition-transform duration-300 hover:scale-110"
+                        />
+                      </div>
+                    </ImagePreviewDialog>
                   )}
                 </div>
               ))}
@@ -118,7 +131,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
           )}
           {project.figmaUrl && (
             <Link href={project.figmaUrl} target="_blank" rel="noopener noreferrer" title="Figma Design">
-              <Video className="h-5 w-5 text-slate-500 hover:text-yellow-600" />
+              <Figma className="h-5 w-5 text-slate-500 hover:text-yellow-600" />
             </Link>
           )}
           {project.notionUrl && project.notionUrl !== "노션 비공개" && project.notionUrl.trim() !== "" && (

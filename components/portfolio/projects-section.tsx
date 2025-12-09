@@ -8,14 +8,14 @@ export function ProjectsSection() {
     <section id="projects" className="py-16">
       <div className="container mx-auto px-4">
         <SectionTitle title="Work Projects" icon={Palette} />
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16 items-start">
           {portfolioData.workProjects.map((project) => (
             <ProjectCard key={project.id} project={project} />
           ))}
         </div>
 
         <SectionTitle title="Personal Projects" icon={Palette} />
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 items-start">
           {portfolioData.personalProjects.map((project) => (
             <ProjectCard key={project.id} project={project} />
           ))}
