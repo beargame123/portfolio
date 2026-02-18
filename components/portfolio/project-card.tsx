@@ -4,7 +4,7 @@ import type { Project } from "@/app/data"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
 import { Badge } from "@/components/ui/badge"
-import { ExternalLink, Github, FileText, Figma } from "lucide-react"
+import { ExternalLink, Github, FileText, Figma, Package } from "lucide-react"
 import { ImagePreviewDialog } from "./image-preview-dialog"
 
 interface ProjectCardProps {
@@ -32,9 +32,9 @@ export function ProjectCard({ project }: ProjectCardProps) {
                 <Image
                   src={project.imageUrl || "/placeholder.svg"}
                   alt={project.name}
-                  layout="fill"
-                  objectFit="cover"
+                  fill
                   className="rounded-t-lg"
+                  style={{ objectFit: project.imageFit || "cover" }}
                 />
               </div>
             </ImagePreviewDialog>
@@ -113,9 +113,9 @@ export function ProjectCard({ project }: ProjectCardProps) {
                                 <Image
                                   src={url}
                                   alt={`${task.title} ${index + 1}`}
-                                  layout="fill"
-                                  objectFit="cover"
+                                  fill
                                   className="transition-transform duration-300 hover:scale-110"
+                                  style={{ objectFit: "cover" }}
                                 />
                               </div>
                             ))}
@@ -125,9 +125,9 @@ export function ProjectCard({ project }: ProjectCardProps) {
                             <Image
                               src={task.imageUrl as string}
                               alt={task.title}
-                              layout="fill"
-                              objectFit="cover"
+                              fill
                               className="transition-transform duration-300 hover:scale-110"
+                              style={{ objectFit: "cover" }}
                             />
                           </div>
                         )}
@@ -159,6 +159,11 @@ export function ProjectCard({ project }: ProjectCardProps) {
           {project.githubUrl && (
             <Link href={project.githubUrl} target="_blank" rel="noopener noreferrer" title="GitHub Repository">
               <Github className="h-5 w-5 text-slate-500 hover:text-yellow-600" />
+            </Link>
+          )}
+          {project.npmUrl && (
+            <Link href={project.npmUrl} target="_blank" rel="noopener noreferrer" title="npm Package">
+              <Package className="h-5 w-5 text-slate-500 hover:text-yellow-600" />
             </Link>
           )}
           {project.figmaUrl && (

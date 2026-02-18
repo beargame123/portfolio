@@ -69,6 +69,7 @@ export interface Project {
   name: string
   shortDescription: string
   imageUrl?: string
+  imageFit?: "cover" | "contain"
   tags?: string[]
   period?: string
   role?: string
@@ -79,6 +80,7 @@ export interface Project {
   achievements?: string[]
   figmaUrl?: string
   githubUrl?: string
+  npmUrl?: string
   notionUrl?: string
   liveUrl?: string
   type: "work" | "personal"
@@ -495,6 +497,66 @@ const basePortfolioData: PortfolioData = {
     },
   ],
   personalProjects: [
+    {
+      id: "devdeck",
+      name: "DevDeck",
+      shortDescription: "일정·음악·Git를 터미널 한 곳에서 처리하는 개발자용 CLI",
+      type: "personal",
+      icon: "🎴",
+      imageUrl: "/devdeck-banner.png",
+      imageFit: "contain",
+      tags: ["Node.js", "CLI", "Git", "mpv", "yt-dlp", "i18n", "Terminal UI"],
+      period: "2026.02 ~ 현재",
+      role: "기획, 개발 (1인)",
+      githubUrl: "https://github.com/KR-Devdeck/devdeck",
+      npmUrl: "https://www.npmjs.com/package/@beargame/devdeck",
+      overview:
+        "회사/개인 개발 흐름을 끊지 않기 위해 만든 올인원 터미널 도구입니다. `deck` 하나로 Daily Dashboard, Terminal Jukebox, Git Manager를 실행하고, 시작 시 환경진단/업데이트 자동 점검까지 처리합니다.",
+      techStack: ["Node.js", "JavaScript", "Inquirer", "Axios", "Chalk", "mpv", "yt-dlp", "npm"],
+      teamComposition: ["1인 개발"],
+      tasks: [
+        {
+          title: "Daily Dashboard 구현",
+          items: [
+            "Todo/Workflow 체크, 날짜/시간 표시를 터미널 박스 UI로 구성",
+            "Open-Meteo 기반 날씨와 개발 명언 API(실패 시 fallback) 연동",
+            "캐시 + 백그라운드 갱신으로 시작 속도 저하 최소화",
+          ],
+          imageUrl: "/devdeck-daily-shot.png",
+        },
+        {
+          title: "Terminal Jukebox 구현",
+          items: [
+            "yt-dlp 기반 음악 검색 및 스트리밍 재생",
+            "mpv 연동으로 백그라운드 재생/제어",
+            "재생목록, 루프, 시크, 볼륨 조절, 재개 재생 등 플레이어 기능",
+          ],
+          imageUrl: "/devdeck-music-shot.png",
+        },
+        {
+          title: "Git Manager 구현",
+          items: [
+            "트리 기반 다중 파일/폴더 선택 스테이징·언스테이징",
+            "커밋/푸시/풀 메뉴형 흐름으로 반복 Git 작업 단순화",
+            "상태 요약 및 변경 파일 탐색 UX 개선",
+          ],
+          imageUrl: "/devdeck-git-shot.png",
+        },
+        {
+          title: "설정/자동화 고도화",
+          items: [
+            "시작 도구 선택, 자동 Doctor/자동 Update, 테마 설정 지원",
+            "한국어/영어/일본어/중국어 i18n 적용",
+            "초기 실행 시 환경 점검 및 업데이트 체크 자동화",
+          ],
+        },
+      ],
+      achievements: [
+        "`deck`, `deck m`, `deck g` 단일 진입점으로 사용성 개선",
+        "개발 중 반복되는 일정/음악/Git 작업을 하나의 CLI로 통합",
+        "다국어 및 자동 점검/업데이트 도입으로 유지보수성 강화",
+      ],
+    },
     {
       id: "haru2end-2.0",
       name: "하루의끝 2.0",

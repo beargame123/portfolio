@@ -21,7 +21,7 @@ export function Footer() {
             </Link>
           ))}
         </div>
-        <p className="text-sm">
+        <p className="text-sm" suppressHydrationWarning>
           &copy; {currentYear} {portfolioData.name}. All rights reserved.
         </p>
         <p className="text-xs mt-2">Built with Next.js and Tailwind CSS.</p>
