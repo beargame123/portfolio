@@ -1,11 +1,8 @@
 import Image from "next/image"
-import Link from "next/link"
 import type { Project } from "@/app/data"
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
-import { Badge } from "@/components/ui/badge"
-import { ExternalLink, Github, FileText, Figma, Package } from "lucide-react"
 import { ImagePreviewDialog } from "./image-preview-dialog"
+import { ProjectDetails, ProjectLinks, chip, iframeAllow, hasProjectLinks } from "./project-details"
 
 interface ProjectCardProps {
   project: Project
@@ -13,171 +10,69 @@ interface ProjectCardProps {
 
 export function ProjectCard({ project }: ProjectCardProps) {
   return (
-    <Card className="shadow-lg flex flex-col">
-      <CardHeader>
-        {project.imageUrl &&
-          (typeof project.imageUrl === "string" && project.imageUrl.includes("youtube.com/embed") ? (
-            <div className="relative w-full h-48 mb-4">
-              <iframe
-                src={project.imageUrl}
-                title={project.name}
-                className="absolute top-0 left-0 w-full h-full rounded-t-lg"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-              ></iframe>
+    <article className="group flex h-full flex-col overflow-hidden rounded-xl border border-black/10 bg-black/[0.02] transition-colors hover:border-black/20 hover:bg-black/[0.03] dark:border-white/10 dark:bg-white/[0.02] dark:hover:border-white/20 dark:hover:bg-white/[0.04]">
+      {project.imageUrl &&
+        (typeof project.imageUrl === "string" && project.imageUrl.includes("youtube.com/embed") ? (
+          <div className="relative h-44 w-full border-b border-black/10 dark:border-white/10">
+            <iframe
+              src={project.imageUrl}
+              title={project.name}
+              className="absolute inset-0 h-full w-full"
+              allow={iframeAllow}
+              allowFullScreen
+            ></iframe>
+          </div>
+        ) : (
+          <ImagePreviewDialog imageUrl={project.imageUrl} altText={project.name}>
+            <div className="relative h-44 w-full cursor-pointer border-b border-black/10 bg-black/[0.02] dark:border-white/10 dark:bg-white/[0.02]">
+              <Image
+                src={project.imageUrl || "/placeholder.svg"}
+                alt={project.name}
+                fill
+                style={{ objectFit: project.imageFit || "cover" }}
+              />
             </div>
-          ) : (
-            <ImagePreviewDialog imageUrl={project.imageUrl} altText={project.name}>
-              <div className="relative w-full h-48 mb-4 cursor-pointer">
-                <Image
-                  src={project.imageUrl || "/placeholder.svg"}
-                  alt={project.name}
-                  fill
-                  className="rounded-t-lg"
-                  style={{ objectFit: project.imageFit || "cover" }}
-                />
-              </div>
-            </ImagePreviewDialog>
-          ))}
-        <CardTitle className="text-xl font-semibold text-slate-800 flex items-center">
-          {project.icon && <span className="mr-2 text-2xl">{project.icon}</span>}
-          {project.name}
-        </CardTitle>
-        <CardDescription>{project.shortDescription}</CardDescription>
-        {project.period && <p className="text-xs text-slate-500">{project.period}</p>}
-        {project.role && <p className="text-sm text-yellow-600 font-medium">{project.role}</p>}
-      </CardHeader>
-      <CardContent className="flex-grow">
-        <div className="flex flex-wrap gap-2 mb-4">
-          {project.tags?.map((tag) => (
-            <Badge key={tag} variant="secondary" className="bg-yellow-100 text-yellow-800">
-              {tag}
-            </Badge>
-          ))}
-        </div>
+          </ImagePreviewDialog>
+        ))}
+
+      <div className="flex flex-1 flex-col p-5">
+        <h3 className="text-base font-semibold text-slate-900 dark:text-white">{project.name}</h3>
+        <p className="mt-1.5 text-sm leading-relaxed text-slate-600 dark:text-zinc-400">{project.shortDescription}</p>
+
+        {(project.period || project.role) && (
+          <div className="mt-2 flex flex-wrap items-center gap-x-3 gap-y-1 text-xs">
+            {project.period && <span className="font-mono text-slate-500">{project.period}</span>}
+            {project.role && <span className="text-amber-600 dark:text-amber-400/90">{project.role}</span>}
+          </div>
+        )}
+
+        {project.tags && (
+          <div className="mt-3 flex flex-wrap gap-1.5">
+            {project.tags.map((tag) => (
+              <span key={tag} className={chip}>
+                {tag}
+              </span>
+            ))}
+          </div>
+        )}
 
         <Accordion type="single" collapsible className="w-full">
-          <AccordionItem value={`project-details-${project.id}`}>
-            <AccordionTrigger className="text-sm">상세 정보 보기</AccordionTrigger>
-            <AccordionContent className="text-sm text-slate-600 space-y-3">
-              {project.overview && (
-                <p>
-                  <strong>개요:</strong> {project.overview}
-                </p>
-              )}
-              {project.techStack && (
-                <div>
-                  <strong>기술 스택:</strong>
-                  <ul className="list-disc list-inside ml-4">
-                    {project.techStack.map((tech) => (
-                      <li key={tech}>{tech}</li>
-                    ))}
-                  </ul>
-                </div>
-              )}
-              {project.teamComposition && (
-                <div>
-                  <strong>팀 구성:</strong>
-                  <ul className="list-disc list-inside ml-4">
-                    {project.teamComposition.map((member) => (
-                      <li key={member}>{member}</li>
-                    ))}
-                  </ul>
-                </div>
-              )}
-              {project.tasks?.map((task, idx) => (
-                <div key={idx}>
-                  <strong>{task.title}:</strong>
-                  <ul className="list-disc list-inside ml-4">
-                    {task.items.map((item) => (
-                      <li key={item} className="whitespace-pre-line">{item}</li>
-                    ))}
-                  </ul>
-                  {task.imageUrl &&
-                    (typeof task.imageUrl === "string" && task.imageUrl.includes("youtube.com/embed") ? (
-                      <div className="relative w-[200px] h-[150px] mt-2 rounded overflow-hidden">
-                        <iframe
-                          src={task.imageUrl}
-                          title={task.title}
-                          className="absolute top-0 left-0 w-full h-full"
-                          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                          allowFullScreen
-                        ></iframe>
-                      </div>
-                    ) : (
-                      <ImagePreviewDialog imageUrl={task.imageUrl} altText={task.title}>
-                        {Array.isArray(task.imageUrl) ? (
-                          <div className="flex gap-2 mt-2 cursor-pointer">
-                            {task.imageUrl.map((url, index) => (
-                              <div key={index} className="relative w-24 h-16 rounded overflow-hidden">
-                                <Image
-                                  src={url}
-                                  alt={`${task.title} ${index + 1}`}
-                                  fill
-                                  className="transition-transform duration-300 hover:scale-110"
-                                  style={{ objectFit: "cover" }}
-                                />
-                              </div>
-                            ))}
-                          </div>
-                        ) : (
-                          <div className="relative w-[200px] h-[150px] mt-2 rounded cursor-pointer overflow-hidden">
-                            <Image
-                              src={task.imageUrl as string}
-                              alt={task.title}
-                              fill
-                              className="transition-transform duration-300 hover:scale-110"
-                              style={{ objectFit: "cover" }}
-                            />
-                          </div>
-                        )}
-                      </ImagePreviewDialog>
-                    ))}
-                </div>
-              ))}
-              {project.achievements && (
-                <div>
-                  <strong>주요 성과:</strong>
-                  <ul className="list-disc list-inside ml-4">
-                    {project.achievements.map((ach) => (
-                      <li key={ach}>{ach}</li>
-                    ))}
-                  </ul>
-                </div>
-              )}
+          <AccordionItem value={`project-details-${project.id}`} className="border-none">
+            <AccordionTrigger className="py-3 text-sm font-normal text-slate-600 hover:text-slate-900 hover:no-underline dark:text-zinc-400 dark:hover:text-white">
+              상세 정보 보기
+            </AccordionTrigger>
+            <AccordionContent className="pb-2">
+              <ProjectDetails project={project} />
             </AccordionContent>
           </AccordionItem>
         </Accordion>
-      </CardContent>
-      <CardFooter className="mt-auto pt-4 border-t">
-        <div className="flex space-x-3">
-          {project.liveUrl && (
-            <Link href={project.liveUrl} target="_blank" rel="noopener noreferrer" title="Live Demo">
-              <ExternalLink className="h-5 w-5 text-slate-500 hover:text-yellow-600" />
-            </Link>
-          )}
-          {project.githubUrl && (
-            <Link href={project.githubUrl} target="_blank" rel="noopener noreferrer" title="GitHub Repository">
-              <Github className="h-5 w-5 text-slate-500 hover:text-yellow-600" />
-            </Link>
-          )}
-          {project.npmUrl && (
-            <Link href={project.npmUrl} target="_blank" rel="noopener noreferrer" title="npm Package">
-              <Package className="h-5 w-5 text-slate-500 hover:text-yellow-600" />
-            </Link>
-          )}
-          {project.figmaUrl && (
-            <Link href={project.figmaUrl} target="_blank" rel="noopener noreferrer" title="Figma Design">
-              <Figma className="h-5 w-5 text-slate-500 hover:text-yellow-600" />
-            </Link>
-          )}
-          {project.notionUrl && project.notionUrl !== "노션 비공개" && project.notionUrl.trim() !== "" && (
-            <Link href={project.notionUrl} target="_blank" rel="noopener noreferrer" title="Notion Document">
-              <FileText className="h-5 w-5 text-slate-500 hover:text-yellow-600" />
-            </Link>
-          )}
-        </div>
-      </CardFooter>
-    </Card>
+
+        {hasProjectLinks(project) && (
+          <div className="mt-auto flex items-center gap-4 border-t border-black/[0.08] pt-4 dark:border-white/[0.08]">
+            <ProjectLinks project={project} />
+          </div>
+        )}
+      </div>
+    </article>
   )
 }

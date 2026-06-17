@@ -2,9 +2,9 @@ import type React from "react"
 import {
   Github,
   Mail,
-  Globe,
-  BrainCircuit,
-  CodeXml,
+  Briefcase,
+  BookOpen,
+  PenLine,
   Code2,
   ServerCog,
   Server,
@@ -83,6 +83,9 @@ export interface Project {
   npmUrl?: string
   notionUrl?: string
   liveUrl?: string
+  playStoreUrl?: string
+  category?: "company" | "freelance"
+  featured?: boolean
   type: "work" | "personal"
   icon?: string // Emoji or path
 }
@@ -137,19 +140,19 @@ const basePortfolioData: PortfolioData = {
   contactLinks: [
     { name: "Email", url: "mailto:hoyoung7827@gmail.com", icon: Mail, text: "hoyoung7827@gmail.com"},
     { name: "GitHub", url: "https://github.com/beargame123", icon: Github, text: "beargame123" },
-    { name: "Kmong", url: "https://kmong.com/gig/584801", icon: Globe, text: "Kmong Profile" },
+    { name: "Kmong", url: "https://kmong.com/gig/584801", icon: Briefcase, text: "Kmong Profile" },
   ],
   blogLinks: [
     {
       name: "공부일지 - Notion",
       url: "https://zinc-puppet-0e0.notion.site/d2ce7cf69c95450e97f5f105979836ee?v=9ce5322d678c4c799199b81ff37f8e30",
-      icon: BrainCircuit,
+      icon: BookOpen,
       description: "개인 학습 내용을 정리하는 Notion 페이지입니다.",
     },
     {
       name: "개발 블로그 - Velog",
       url: "https://velog.io/@beargame/posts",
-      icon: CodeXml,
+      icon: PenLine,
       description: "beargame님이 작성한 포스트 시리즈들을 확인해보세요.",
       imageUrl: "https://images.velog.io/velog.png",
     },
@@ -211,7 +214,12 @@ const basePortfolioData: PortfolioData = {
     },
   ],
   experiences: [
-    { company: "프리랜서 (크몽)", role: "Backend, Frontend Developer", period: "2024.05 ~ 현재" },
+    {
+      company: "제론소프트엔(ZeronSoftn)",
+      role: "Backend Developer",
+      period: "2025.12 ~ 현재",
+    },
+    { company: "프리랜서 (크몽)", role: "Backend, Frontend Developer", period: "2024.05 ~ 2025.10" },
     { company: "휴라(HURA)", role: "Backend Developer", period: "2023.10 ~ 2024.04", department: "SW개발팀" },
     {
       company: "휴라(HURA)",
@@ -222,16 +230,128 @@ const basePortfolioData: PortfolioData = {
   ],
   workProjects: [
     {
+      id: "zeroset",
+      name: "제로셋(ZeroSet) 2.0 — IT 자산통합 관리 솔루션",
+      shortDescription: "Ledger 기반 무결성·감사 구조로 재설계한 IT 자산통합 관리 솔루션(MSA)",
+      type: "work",
+      featured: true,
+      category: "company",
+      icon: "🗄️",
+      period: "2025.12 ~ 현재",
+      role: "백엔드 개발",
+      liveUrl: "https://home.zeronsoftn.com/pro_zroset",
+      imageUrl: "/zeroset/hero-dashboard.png",
+      imageFit: "cover",
+      overview:
+        "제론소프트엔의 IT 자산통합 관리 자동화 솔루션 '제로셋'의 안정화 및 고도화 프로젝트입니다. 에이전트가 수집한 PC·모니터·프린터 등 물리 자산과 소프트웨어 자산을 실시간으로 관리하며, 데이터 오류 발생 시 복구가 불가능하던 기존 구조를 Diff Log + Snapshot 기반의 강건한 감사(Audit) 구조로 재설계했습니다. 기존 멀티 레포 MSA를 멀티모듈 단일 레포로 재구성하고, 변경 이력을 위변조 불가능하게 증명하는 Ledger 시스템을 직접 설계·구현했습니다.",
+      techStack: [
+        "Kotlin",
+        "Spring Boot",
+        "MongoDB",
+        "RabbitMQ",
+        "GraphQL",
+        "Spring Cloud OpenFeign",
+        "Protobuf",
+        "Gradle (Multi-module)",
+        "Docker",
+        "Kubernetes",
+        "Helm",
+        "GitLab CI",
+        "SHA-256 / Sparse Merkle Tree",
+        "Testcontainers",
+      ],
+      teamComposition: ["제로셋(ZeroSet) 백엔드 개발"],
+      tasks: [
+        {
+          title: "레거시 제로셋 분석 및 멀티모듈 단일 레포 재구성",
+          items: [
+            "기존 멀티 레포 MSA(수집/물리자산/SW자산/세팅 서비스) 구조 분석 및 데이터 수집 flow 파악",
+            "관리가 어렵던 멀티 레포 구조를 multi-project + single-repository 구조(zeroset-module)로 재구성",
+            "collect/tangible/software/setting 서비스에 중복되던 Version·Dependency·Exception·DTO를 buildSrc / interfaces 공통 모듈로 통합",
+            "서비스 간 Collect Feign 호출을 내부 처리로 전환하고 공용 Entity를 interfaces로 정리",
+          ],
+        },
+        {
+          title: "Ledger(감사 이력) 아키텍처 설계 및 도입",
+          items: [
+            "최신 상태만 저장하던 구조를 Current(최신 상태) + Ledger(append-only 변경 이력) 구조로 분리",
+            "TangibleAsset·SwAsset·Software·Setting 등 도메인별 *Current 조회 Repository 신설 및 조회 경로 전환",
+            "Ledger에 diff·current·audit(누가/언제/어디서)을 함께 저장해 변경점과 변경 후 최종 상태를 동시에 추적",
+            "updatedAt·createdAt·device.sync_time 등 운영 메타데이터만 바뀐 no-op 변경은 Ledger version을 올리지 않도록 처리",
+            "Current root field를 snake_case(tenant_id·ledger_key)로 통일하되 legacy camelCase 문서도 읽도록 fallback 추가 → 조회 miss로 인한 중복 자산 생성 방지",
+          ],
+          imageUrl: ["/zeroset/asset-detail.png", "/zeroset/part-history.png", "/zeroset/delete-history.png"],
+        },
+        {
+          title: "zeron-ledger 공통 라이브러리 구축 (무결성 증명)",
+          items: [
+            "Ledger 로직을 core / mongodb / spring-boot-starter / testkit 멀티모듈 라이브러리로 분리",
+            "Diff(flattened path 기반 변경점 계산), Canonical JSON 직렬화 + SHA-256 해시 체인 구현",
+            "depth-256 Sparse Merkle Tree(SMT)로 inclusion / non-inclusion proof 생성 및 검증 구현 (Current 상태 무결성 증명)",
+            "@EnableZeronLedger auto-configuration으로 호스트 프로젝트가 MongoOperations만 제공하면 동작하도록 설계",
+          ],
+        },
+        {
+          title: "SMT 성능 최적화 (트랜잭션 단위 버퍼링)",
+          items: [
+            "write마다 CurrentState 전체를 재계산하던 방식을 변경 경로(최대 256개)만 갱신하는 증분 업데이트로 개선",
+            "smtRoots를 insert에서 tenant당 1건 upsert로 수정하고, 노드 저장을 bulkOps로 묶음",
+            "한 트랜잭션 내 다수 write를 메모리에 버퍼링했다가 beforeCommit 훅에서 일괄 flush (aergoio SMT CacheDB 패턴 차용)",
+            "같은 key 중복 write dedup + 경로 공유 노드 overlay 재사용으로 DB write를 write N회 → 트랜잭션당 1회로 축소, 롤백 원자성 확보",
+          ],
+        },
+        {
+          title: "software-meta-service 신규 모듈 및 감지 SW 그룹화",
+          items: [
+            "고유 소프트웨어 식별용 메타 카탈로그(SoftwareMeta) 서비스 신설 — 제론 운영 + 고객사 자체 추가 가능",
+            "수백 건 SwAsset에 모든 정규식을 매번 평가하던 비용을 Trie 인덱싱(prefix 매칭 후보로 한정)으로 최적화",
+            "기존 getSwAssets GraphQL에 grouped 인자(default true)만 추가해 프론트 변경 없이 같은 SW의 여러 버전을 한 row로 통합",
+            "swAssetCurrent 1470건 → 495 그룹 자동 시드(매칭률 100%), 거친 prefix는 inclusion 알고리즘으로 자동 정리",
+            "device union 기반 설치 수량 중복 카운트 및 페이지 단위 그룹화의 페이징 깨짐 문제 해결",
+          ],
+          imageUrl: ["/zeroset/license.png", "/zeroset/os-license.png"],
+        },
+        {
+          title: "폰트(Font) 자산·라이선스 관리 기능 구현",
+          items: [
+            "pms-feature의 FontInfoPushData 수신 → collect-service → RabbitMQ → software-service 흐름의 폰트 수집 파이프라인 구축",
+            "postscriptName을 고유 식별자로 FontAsset(Current/Ledger/SMT) upsert, 설치 PC별 filePath·installedUser 관리",
+            "non-login 수집 시 active_users 기반으로 개인 폰트를 삭제로 오판하지 않도록 삭제 판단 로직 설계",
+            "폰트 라이선스 등록/할당/회수 GraphQL 및 라이선스 연동 상태(INTERWORKED) 자동 처리 구현",
+          ],
+        },
+        {
+          title: "헥사고날 계층 정리 및 빌드 검증",
+          items: [
+            "application service가 Feign client를 직접 의존하던 구조를 UseCase → outbound Port → Adapter → Client 흐름으로 정리",
+            "Font/SW meta 호출 구조를 동일 패턴(FontMetaPort·SoftwareMetaPort)으로 통일",
+            "변경마다 zeron-ledger test 및 각 서비스 compileKotlin으로 빌드 안정성 검증",
+          ],
+        },
+      ],
+      achievements: [
+        "복구 불가·정합성 오류가 있던 기존 구조를 Current + Ledger + SMT 기반의 위변조 증명 가능한 감사 구조로 재설계",
+        "Ledger 무결성 검증 로직을 core/mongodb/spring-boot-starter/testkit 멀티모듈 공통 라이브러리(zeron-ledger)로 추출",
+        "SMT 갱신 비용을 전체 재계산에서 트랜잭션 단위 증분 + 버퍼링으로 최적화하여 DB write를 트랜잭션당 1회로 축소",
+        "운영 메타데이터만 바뀌는 무의미한 Ledger version 증가와 Current 조회 miss로 인한 중복 자산 생성 제거",
+        "Trie 매칭 메타 카탈로그로 감지 SW 자동 그룹화(매칭률 100%) 및 폰트 자산·라이선스 관리 기능 신규 도입",
+      ],
+      tags: ["Kotlin", "Spring Boot", "MSA", "MongoDB", "Ledger", "Merkle Tree", "RabbitMQ", "GraphQL"],
+    },
+    {
       id: "taropick",
       name: "타로픽(TAROPICK)",
       shortDescription: "타로 운세 상담 플랫폼",
       type: "work",
+      featured: true,
+      category: "freelance",
       icon: "🔮",
       period: "2025.04 ~ 2025.05",
       role: "백엔드 개발",
       liveUrl: "https://youtube.com/shorts/98QF26q2ncA",
       imageUrl: "/taropick-main-banner.png",
-      overview: "타로 운세 상담 플랫폼입니다. 실시간 상담, 결제, 사용자 관리 기능을 제공합니다.",
+      overview:
+        "의뢰받아 개발한 실시간 타로 상담 플랫폼입니다. 개발은 완료했으나 클라이언트 사정으로 정식 출시까지 이어지지 못해 운영 지표는 없지만, 결제·실시간·인증을 포함한 백엔드 전반을 단독으로 설계·구현했습니다. 핵심 과제는 ① 상담사 상태와 페이지 접속자를 실시간으로 보여주기, ② 국내 결제(KG이니시스)를 안정적으로 붙이기, ③ Spring Boot 3에서 복잡한 동적 검색을 깔끔하게 처리하기였고, 각각 WebSocket · 포트원(PortOne) 결제 추상화 · QueryDsl로 해결했습니다.",
       techStack: [
         "Java",
         "Spring Boot",
@@ -291,25 +411,28 @@ const basePortfolioData: PortfolioData = {
         },
       ],
       achievements: [
-        "OAuth를 통한 간편 SNS 로그인 기능 구현",
-        "WebSocket을 사용하여 실시간으로 페이지 접속자 수 확인 기능 구현",
-        "포트원(구 아임포트) API를 연동하여 KG이니시스 결제 시스템 안정적으로 구축",
-        "QueryDsl 도입을 통한 데이터베이스 조회 성능 개선",
+        "WebSocket으로 상담사 실시간 상태와 페이지 동시 접속자 표시 구현",
+        "포트원(PortOne) API로 KG이니시스 결제 연동 — 성공/실패/취소 플로우와 사용자 알림까지 처리",
+        "Spring Boot 3 마이그레이션에 맞춰 Security·Swagger 설정 리팩토링, Enum 기반 전역 예외 처리로 에러 응답 일관화",
+        "QueryDsl로 동적 검색·정렬 쿼리의 타입 안정성과 가독성 확보",
+        "(개발 완료 후 미출시 — 운영 트래픽 지표 없음)",
       ],
       tags: ["Java", "Spring Boot", "AWS", "WebSocket", "OAuth", "Payment Gateway"],
     },
     {
       id: "imott",
       name: "아임오티티(IMOTT)",
-      shortDescription: "다양한 OTT 플랫폼 할인 판매 서비스",
+      shortDescription: "OTT 구독권 할인 판매 커머스 (풀스택 단독) · 운영 매출 약 1.2억 원",
       type: "work",
+      featured: true,
+      category: "freelance",
       icon: "📺",
       period: "2024.10 ~ 현재",
       role: "백엔드, 프론트엔드 개발",
       liveUrl: "https://imott.co.kr/",
       imageUrl: "/imott-logo.jpg",
       overview:
-        "다양한 OTT 서비스를 저렴하게 구매할 수 있는 사이트입니다. 직원/어드민 관리 페이지 및 자동 주문 처리 기능을 포함합니다.",
+        "여러 OTT 구독권을 할인가에 판매하는 커머스 서비스로, 백엔드와 Thymeleaf 프론트를 단독으로 맡았습니다. 가장 큰 과제는 네이버 등으로 들어오는 주문을 사람이 일일이 접수·응대하던 수작업을 없애는 것이었습니다. 주문 자동 접수 + 고객 메일 자동 발송(주문 완료·재고 부족) 파이프라인으로 운영 부담을 줄였고, 재고·매출·커미션을 한눈에 보는 직원/어드민 대시보드를 구축했습니다. 별도 프론트 인력 없이 빠르게 출시하려고 Thymeleaf 서버 렌더링을 택했습니다.",
       techStack: [
         "Java",
         "Spring Boot",
@@ -358,7 +481,12 @@ const basePortfolioData: PortfolioData = {
           imageUrl: "/imott-email-confirmation.png",
         },
       ],
-      achievements: ["네이버 주문 연동 자동 주문 처리 및 메일 발송 시스템 구현", "Thymeleaf를 활용한 풀스택 개발 경험"],
+      achievements: [
+        "직접 구축·운영된 서비스가 약 1.2억 원의 매출을 처리 (실서비스 검증)",
+        "네이버 주문 자동 접수 + 고객 메일 자동 발송으로 수작업 응대 제거",
+        "재고·매출·매입가·커미션을 시각화한 직원/어드민 대시보드 구축 및 다국어(한/영) 지원",
+        "Thymeleaf 기반 풀스택 단독 개발로 별도 프론트 인력 없이 빠르게 출시",
+      ],
       tags: ["Java", "Spring Boot", "Thymeleaf", "AWS"],
     },
     {
@@ -366,6 +494,7 @@ const basePortfolioData: PortfolioData = {
       name: "(주)오O 자격진흥원",
       shortDescription: "자격증 발급 및 온라인 시험 서비스",
       type: "work",
+      category: "freelance",
       icon: "📜",
       period: "2024.08 ~ 2024.11",
       role: "풀스택 개발",
@@ -422,6 +551,7 @@ const basePortfolioData: PortfolioData = {
       name: "(주)휴라 - 기정원 빅데이터",
       shortDescription: "데이터 저장 및 이상 신호 데이터 수집 서비스",
       type: "work",
+      category: "company",
       icon: "📊",
       period: "2024.01 ~ 2024.04",
       role: "백엔드 개발 및 인프라 구성",
@@ -448,6 +578,8 @@ const basePortfolioData: PortfolioData = {
       name: "(주)휴라 - PSLTE",
       shortDescription: "실시간 LTE 신호 탐지 서비스",
       type: "work",
+      featured: true,
+      category: "company",
       icon: "📡",
       period: "2023.08 ~ 2024.03",
       role: "백엔드 개발",
@@ -500,8 +632,9 @@ const basePortfolioData: PortfolioData = {
     {
       id: "devdeck",
       name: "DevDeck",
-      shortDescription: "일정·음악·Git를 터미널 한 곳에서 처리하는 개발자용 CLI",
+      shortDescription: "일정·음악·Git를 터미널 한 곳에서 처리하는 개발자용 CLI · npm 1,000+ 다운로드",
       type: "personal",
+      featured: true,
       icon: "🎴",
       imageUrl: "/devdeck-banner.png",
       imageFit: "contain",
@@ -552,6 +685,7 @@ const basePortfolioData: PortfolioData = {
         },
       ],
       achievements: [
+        "npm 배포 후 1,000+ 다운로드 달성 — 실제 사용자에게 검증된 도구",
         "`deck`, `deck m`, `deck g` 단일 진입점으로 사용성 개선",
         "개발 중 반복되는 일정/음악/Git 작업을 하나의 CLI로 통합",
         "다국어 및 자동 점검/업데이트 도입으로 유지보수성 강화",
@@ -562,6 +696,7 @@ const basePortfolioData: PortfolioData = {
       name: "하루의끝 2.0",
       shortDescription: "BackEnd, FrontEnd, Android 개발을 1인이 진행한 개인 프로젝트",
       type: "personal",
+      featured: true,
       icon: "🌙",
       imageUrl: "/haru2end/logo.png",
       tags: [
@@ -579,7 +714,7 @@ const basePortfolioData: PortfolioData = {
       period: "2025.07.02 ~ 2025.09.27",
       role: "Front-End, Back-End, Android, Design",
       overview:
-        "하루를 끝내며 오늘의 순간과 감정을 기록하고, 감성적인 일기를 꾸밀 수 있는 다이어리형 커뮤니티 서비스",
+        "하루를 기록하고 감정을 나누는 다이어리형 커뮤니티로, 백엔드·프론트·안드로이드·디자인을 1인이 맡았습니다. 이전 프로젝트들이 AWS(EC2/RDS/S3)에 의존했던 것과 달리, 이번엔 비용 없이 인프라를 직접 통제해보려고 자체 미니PC에 서버·DB·스토리지를 직접 구축해 운영했습니다(현재 haru2end.com 운영 중, Google Play 출시 완료). Java 대신 Kotlin을 택해 Null 안정성을 확보했고, OAuth2.0(카카오·구글)+JWT 인증, i18next 다국어, 댓글·좋아요·감정 카테고리 커뮤니티까지 구현했습니다.",
       techStack: ["Kotlin", "Spring Boot 3.x", "Java21", "Redis", "MySQL", "React", "react-i18next", "React Native", "OAuth2.0", "JWT", "Docker", "Self-hosted MiniPC"],
       teamComposition: ["1인 개발 (Front-End, Back-End, Android, Design)"],
       tasks: [
@@ -650,6 +785,7 @@ const basePortfolioData: PortfolioData = {
       ],
       githubUrl: "https://github.com/KR-TD",
       liveUrl: "https://haru2end.com",
+      playStoreUrl: "https://play.google.com/store/apps/details?id=com.diaryphone&hl=ko",
       notionUrl: "https://haru2end.notion.site/Haru2End-26244522a025803b8cdfcbd90c3b0822?pvs=73",
     },
     {

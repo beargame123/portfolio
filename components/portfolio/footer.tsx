@@ -1,31 +1,25 @@
 import { portfolioData } from "@/app/data"
-import Link from "next/link"
 
 export function Footer() {
   const currentYear = new Date().getFullYear()
+  const email = portfolioData.contactLinks.find((l) => l.name === "Email")
   return (
-    <footer id="contact" className="py-12 bg-slate-800 text-slate-300">
-      <div className="container mx-auto px-4 text-center">
-        <h3 className="text-2xl font-semibold mb-6 text-white">Get In Touch</h3>
-        <div className="flex justify-center space-x-6 mb-8">
-          {portfolioData.contactLinks.map((link) => (
-            <Link
-              key={link.name}
-              href={link.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-yellow-400 transition-colors"
-              title={link.name}
-            >
-              <link.icon className="h-8 w-8" />
-            </Link>
-          ))}
-        </div>
-        <p className="text-sm" suppressHydrationWarning>
-          &copy; {currentYear} {portfolioData.name}. All rights reserved.
-        </p>
-        <p className="text-xs mt-2">Built with Next.js and Tailwind CSS.</p>
-      </div>
+    <footer id="contact" className="scroll-mt-24 border-t border-slate-200 pb-6 pt-10 dark:border-slate-800/60">
+      <p className="text-sm leading-relaxed text-slate-600 dark:text-slate-400">
+        새로운 기회나 협업 제안은 언제든 환영합니다.{" "}
+        {email && (
+          <a
+            href={email.url}
+            className="font-medium text-slate-800 underline-offset-2 transition-colors hover:text-amber-600 hover:underline dark:text-slate-200 dark:hover:text-amber-400"
+          >
+            이메일로 연락주세요
+          </a>
+        )}
+        .
+      </p>
+      <p className="mt-5 font-mono text-xs text-slate-400 dark:text-slate-600" suppressHydrationWarning>
+        © {currentYear} {portfolioData.name} · Built with Next.js &amp; Tailwind CSS
+      </p>
     </footer>
   )
 }
