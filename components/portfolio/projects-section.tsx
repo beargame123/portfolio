@@ -93,7 +93,7 @@ function FolderGrid({ nodes, onOpen }: { nodes: FolderNode[]; onOpen: (key: stri
           className="group flex flex-col items-center gap-2.5 rounded-xl border border-black/10 bg-black/[0.02] px-3 py-6 transition-all hover:-translate-y-0.5 hover:border-amber-500/40 hover:bg-amber-500/[0.06] dark:border-white/10 dark:bg-white/[0.02] dark:hover:border-amber-400/40 dark:hover:bg-amber-400/[0.06]"
         >
           <span className="relative h-12 w-12">
-            <Folder className="absolute inset-0 h-12 w-12 text-amber-500 transition-opacity group-hover:opacity-0" />
+            <Folder className="absolute inset-0 h-12 w-12 text-slate-400 transition-opacity group-hover:opacity-0 dark:text-slate-500" />
             <FolderOpen className="absolute inset-0 h-12 w-12 text-amber-500 opacity-0 transition-opacity group-hover:opacity-100" />
           </span>
           <span className="text-center text-sm font-medium text-slate-800 dark:text-slate-200">{n.label}</span>
@@ -206,7 +206,7 @@ export function ProjectsSection() {
   const labels = pathLabels(displayPath)
 
   return (
-    <section id="projects" className="scroll-mt-24 py-14 lg:py-20">
+    <section id="projects" className="scroll-mt-24 border-t border-[var(--hairline)] py-12 lg:py-16">
       <SectionTitle title="Projects" number="04" />
 
       {resumePath && (
@@ -220,7 +220,7 @@ export function ProjectsSection() {
             <button
               type="button"
               onClick={() => navigate(resumePath)}
-              className="rounded-md bg-amber-500 px-3 py-1.5 text-xs font-semibold text-slate-950 transition-colors hover:bg-amber-400"
+              className="rounded-md border border-amber-500/40 bg-amber-500/10 px-3 py-1.5 text-xs font-semibold text-amber-700 transition-colors hover:bg-amber-500/15 dark:text-amber-300"
             >
               이어서 열기
             </button>
@@ -263,7 +263,7 @@ export function ProjectsSection() {
             )}
             <DialogDescription className="sr-only">{labels.join(" ")} 폴더의 내용입니다.</DialogDescription>
           </DialogHeader>
-          <div className="overflow-y-auto px-5 py-5">
+          <div className="thin-scroll overflow-y-auto px-5 py-5">
             {node && <FolderBody node={node} onOpen={(key) => navigate([...displayPath, key])} />}
           </div>
         </DialogContent>

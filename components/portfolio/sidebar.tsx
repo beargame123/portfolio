@@ -34,7 +34,7 @@ export function Sidebar() {
   }, [])
 
   return (
-    <header className="mb-14 lg:sticky lg:top-0 lg:mb-0 lg:flex lg:h-screen lg:max-h-screen lg:w-[44%] lg:flex-col lg:justify-between lg:py-24">
+    <header className="mb-14 lg:sticky lg:top-0 lg:mb-0 lg:flex lg:flex-col lg:py-24">
       <div>
         <Image
           src={portfolioData.profileImageUrl || "/placeholder.svg"}
@@ -46,14 +46,18 @@ export function Sidebar() {
         />
         <Link
           href="#"
-          className="text-4xl font-bold tracking-tight text-slate-900 dark:text-slate-100 sm:text-5xl"
+          className="block text-[40px] font-bold leading-[1.05] tracking-[-0.03em] text-slate-900 dark:text-slate-100 sm:text-[52px]"
         >
           {portfolioData.name}
         </Link>
-        <p className="mt-3 text-lg font-medium text-amber-600 dark:text-amber-400">{portfolioData.title}</p>
-        <p className="mt-4 max-w-xs text-[15px] leading-relaxed text-slate-600 dark:text-slate-400">
-          <span className="font-medium text-slate-900 dark:text-slate-200">Slowly but accurately.</span> 새로운
-          개념을 배울 때, 빠름보다 깊게 이해하는 걸 추구합니다.
+        <p className="mt-3 text-[15px] font-semibold tracking-tight text-amber-700 dark:text-amber-400">
+          {portfolioData.title}
+        </p>
+        <p className="mt-5 font-mono text-[12px] uppercase tracking-[0.18em] text-slate-500 dark:text-slate-400">
+          Slowly but accurately
+        </p>
+        <p className="mt-2 max-w-xs text-[14px] leading-relaxed text-slate-600 dark:text-slate-400">
+          새로운 개념을 배울 때, 빠름보다 깊게 이해하는 걸 추구합니다.
         </p>
 
         <nav className="mt-16 hidden lg:block" aria-label="In-page">
@@ -73,7 +77,7 @@ export function Sidebar() {
                     <span
                       className={`text-xs font-semibold uppercase tracking-[0.18em] transition-colors ${
                         isActive
-                          ? "text-amber-600 dark:text-amber-400"
+                          ? "text-amber-700 dark:text-amber-400"
                           : "text-slate-500 group-hover:text-slate-900 dark:group-hover:text-slate-200"
                       }`}
                     >

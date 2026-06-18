@@ -8,12 +8,14 @@ interface SectionTitleProps {
 
 const SectionTitle: React.FC<SectionTitleProps> = ({ title, number }) => {
   return (
-    <h2 className="mb-8 flex items-baseline gap-3 text-lg font-bold tracking-wide text-slate-900 dark:text-slate-100">
+    <div className="mb-8">
       {number && (
-        <span className="font-mono text-sm font-normal text-amber-600 dark:text-amber-400">{number}.</span>
+        <span className="mb-1.5 block font-mono text-[11px] font-normal uppercase tracking-[0.22em] text-amber-700 dark:text-amber-400/90">
+          {number}
+        </span>
       )}
-      {title}
-    </h2>
+      <h2 className="text-lg font-bold tracking-tight text-slate-900 dark:text-slate-100">{title}</h2>
+    </div>
   )
 }
 

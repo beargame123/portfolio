@@ -16,10 +16,10 @@ export default function PortfolioPage() {
         <ThemeToggle />
       </div>
       <MobileNav />
-      <div className="mx-auto max-w-6xl px-6 py-12 md:px-12 lg:px-20 lg:py-0">
-        <div className="lg:flex lg:justify-between lg:gap-12">
+      <div className="mx-auto max-w-[1440px] px-6 py-12 md:px-12 lg:px-20 lg:py-0">
+        <div className="lg:grid lg:grid-cols-[360px_minmax(0,1fr)] lg:gap-x-16">
           <Sidebar />
-          <main className="pt-2 lg:w-[52%] lg:py-24">
+          <main className="min-w-0 pt-2 lg:py-24">
             <AboutSection />
             <SkillsSection />
             <ExperienceSection />

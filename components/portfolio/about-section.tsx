@@ -5,9 +5,9 @@ import { ArrowUpRight } from "lucide-react"
 
 export function AboutSection() {
   return (
-    <section id="about" className="scroll-mt-24 pb-14 lg:pb-20">
+    <section id="about" className="scroll-mt-24 pb-12 lg:pb-16">
       <SectionTitle title="About" number="01" />
-      <div className="space-y-4 text-[15px] leading-relaxed text-slate-600 dark:text-slate-400">
+      <div className="max-w-[68ch] space-y-4 text-[15px] leading-relaxed text-slate-600 dark:text-slate-400">
         {portfolioData.introduction.map((line, index) => (
           <p key={index}>{line}</p>
         ))}

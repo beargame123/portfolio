@@ -13,7 +13,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
     <article className="group flex h-full flex-col overflow-hidden rounded-xl border border-black/10 bg-black/[0.02] transition-colors hover:border-black/20 hover:bg-black/[0.03] dark:border-white/10 dark:bg-white/[0.02] dark:hover:border-white/20 dark:hover:bg-white/[0.04]">
       {project.imageUrl &&
         (typeof project.imageUrl === "string" && project.imageUrl.includes("youtube.com/embed") ? (
-          <div className="relative h-44 w-full border-b border-black/10 dark:border-white/10">
+          <div className="relative aspect-[16/10] w-full border-b border-black/10 dark:border-white/10">
             <iframe
               src={project.imageUrl}
               title={project.name}
@@ -24,11 +24,12 @@ export function ProjectCard({ project }: ProjectCardProps) {
           </div>
         ) : (
           <ImagePreviewDialog imageUrl={project.imageUrl} altText={project.name}>
-            <div className="relative h-44 w-full cursor-pointer border-b border-black/10 bg-black/[0.02] dark:border-white/10 dark:bg-white/[0.02]">
+            <div className="relative aspect-[16/10] w-full cursor-pointer overflow-hidden border-b border-black/10 bg-black/[0.02] dark:border-white/10 dark:bg-white/[0.02]">
               <Image
                 src={project.imageUrl || "/placeholder.svg"}
                 alt={project.name}
                 fill
+                className="transition-transform duration-500 ease-out group-hover:scale-[1.03]"
                 style={{ objectFit: project.imageFit || "cover" }}
               />
             </div>
@@ -41,8 +42,8 @@ export function ProjectCard({ project }: ProjectCardProps) {
 
         {(project.period || project.role) && (
           <div className="mt-2 flex flex-wrap items-center gap-x-3 gap-y-1 text-xs">
-            {project.period && <span className="font-mono text-slate-500">{project.period}</span>}
-            {project.role && <span className="text-amber-600 dark:text-amber-400/90">{project.role}</span>}
+            {project.period && <span className="font-mono tabular-nums text-slate-500">{project.period}</span>}
+            {project.role && <span className="text-amber-700 dark:text-amber-400/90">{project.role}</span>}
           </div>
         )}
 
