@@ -259,26 +259,62 @@ const basePortfolioData: PortfolioData = {
         "GitLab CI",
         "SHA-256 / Sparse Merkle Tree",
         "Testcontainers",
+        "MapLibre",
+        "TileServer GL",
+        "Planetiler",
       ],
       teamComposition: ["제로셋(ZeroSet) 백엔드 개발"],
       tasks: [
         {
-          title: "레거시 제로셋 분석 및 멀티모듈 단일 레포 재구성",
+          title: "ZeroSet Project 구조 설계 — 멀티 레포 MSA를 멀티모듈 단일 레포로",
           items: [
-            "기존 멀티 레포 MSA(수집/물리자산/SW자산/세팅 서비스) 구조 분석 및 데이터 수집 flow 파악",
-            "관리가 어렵던 멀티 레포 구조를 multi-project + single-repository 구조(zeroset-module)로 재구성",
-            "collect/tangible/software/setting 서비스에 중복되던 Version·Dependency·Exception·DTO를 buildSrc / interfaces 공통 모듈로 통합",
-            "서비스 간 Collect Feign 호출을 내부 처리로 전환하고 공용 Entity를 interfaces로 정리",
+            "데이터 신뢰성 한계(최신 상태만 저장 → 시점 복구 불가·로그 정합성 문제)와 멀티 레포의 버전 불일치 문제를 정의하고 신규 구조 설계",
+            "기존 멀티 레포 MSA(수집/물리자산/SW자산/세팅 서비스)의 데이터 수집 flow 분석 후 multi-project + single-repository 구조(zeroset-module)로 재구성",
+            "빌드 관리 체계 이원화 — Version Catalog(libs.versions.toml)로 라이브러리 버전·번들을 중앙 관리하고, buildSrc(Convention Plugins)로 공통 컴파일 옵션·GraphQL 코드 생성 로직을 캡슐화 (Spring Boot 2.7.18·Gradle 8.14.3 Kotlin DSL 기준 통일, 사용 가이드 문서화)",
+            "RabbitMQ 송신(Collect)·수신(Tangible/SW) 간 중복 정의되던 DTO와 서비스마다 파편화된 Exception을 zeroset-interfaces 공통 모듈로 통합 설계",
+            "레거시 병행 운영(Strangler Pattern)으로 점진 이관 — Frontend GraphQL 인터페이스는 그대로 유지해 클라이언트 수정 없이 백엔드만 교체",
+            "ZeroSet 가이드 문서 생성, 데이터 흐름도 최신화 및 주석 정리",
+          ],
+        },
+        {
+          title: "Hexagonal + DDD 아키텍처 적용 및 설계 (서비스 5종 일괄)",
+          items: [
+            "Controller/Resolver가 Service와 Repository를 직접 엮던 레거시 구조를 UseCase/Service → outbound Port → Persistence Adapter → Repository 의존 방향으로 재설계",
+            "Collect·Tangible·Software·Software-Meta·Setting 5개 서비스에 동일 원칙 일괄 적용 — Resolver는 GraphQL 요청/응답 변환만, Service는 비즈니스 로직만, 저장소 접근은 Port 뒤로 은닉",
+            "swAsset 그룹핑처럼 Resolver 안에 섞여 있던 핵심 비즈니스 로직을 Service 계층으로 분리 (기존 GraphQL 응답 필드와 DB 동작은 그대로 유지)",
+            "오류 리스크가 낮은 서비스부터 순차 전환하는 전략 수립 — setting → collect → tangible → software 순서로 진행해 장애 리스크 최소화",
+            "변경한 주요 Service에 회귀 테스트 추가, 변경마다 zeron-ledger test·compileKotlin으로 빌드 안정성 검증",
+          ],
+        },
+        {
+          title: "FeignClient 걷어내기 — 서비스 간 결합 제거",
+          items: [
+            "(Software·Tangible) ↔ Collect 간 Feign 요청 삭제 및 내부 처리 전환",
+            "(Software·Tangible) ↔ Setting 간 Feign 요청 삭제 및 남아있던 호출 정리",
+            "ZerosetUni → ZerobackUni 공통 모듈 전환과 함께 잔여 Feign 의존 제거",
+            "application service가 Feign client를 직접 의존하던 구조를 UseCase → outbound Port → Adapter → Client 흐름으로 정리 — Font/SW meta 호출도 동일 패턴(FontMetaPort·SoftwareMetaPort)으로 통일",
+          ],
+        },
+        {
+          title: "GitLab CI 통합 및 Dockerfile 정비",
+          items: [
+            "서비스별 제각각이던 GitLab CI 파이프라인을 zeroset-module 기준으로 통합, Dockerfile 수정으로 빌드/배포 흐름 일원화",
           ],
         },
         {
           title: "Ledger(감사 이력) 아키텍처 설계 및 도입",
           items: [
+            "설계 리서치 문서화 — Event Sourcing·CQRS·MS SQL Database Ledger(Updatable ledger table/Digest) 개념을 스터디하고 사내 Docs(142페이지 규모)에 리서치·설계 페이지 다수 작성",
+            "저장 구조 4개 설계안 비교(조회 시 aggregation 재계산 비용, Snapshot 컬렉션 운영 부담, S3 즉시 쿼리 불가 등 기준) 후 'Ledger(diff+current 통합 저장, append-only) + Current' 2-컬렉션 구조 채택",
+            "Merkle Tree · Sparse Merkle Tree · Hitchhiker Tree 자료구조 비교 검토 후 depth-256 SMT 채택 — Trusted Storage 구현 방안, Snapshot 생성 방식까지 문서로 검증",
             "최신 상태만 저장하던 구조를 Current(최신 상태) + Ledger(append-only 변경 이력) 구조로 분리",
             "TangibleAsset·SwAsset·Software·Setting 등 도메인별 *Current 조회 Repository 신설 및 조회 경로 전환",
-            "Ledger에 diff·current·audit(누가/언제/어디서)을 함께 저장해 변경점과 변경 후 최종 상태를 동시에 추적",
+            "Ledger에 diff·current·audit(누가/언제/어디서)을 함께 저장해 변경점과 변경 후 최종 상태를 동시에 추적 — type(INSERT/UPDATE/DELETE/RESTORE)과 prevId 참조로 변경 종류·이력 연결성을 DB에서 바로 확인",
+            "복원(rollback) 3모드 설계 — VERSION(특정 버전)·PREVIOUS(prevId 체인 역행)·POINT_IN_TIME(특정 시각), 복원조차 과거 이력을 수정하지 않는 append-only RESTORE 레코드로 기록",
             "updatedAt·createdAt·device.sync_time 등 운영 메타데이터만 바뀐 no-op 변경은 Ledger version을 올리지 않도록 처리",
             "Current root field를 snake_case(tenant_id·ledger_key)로 통일하되 legacy camelCase 문서도 읽도록 fallback 추가 → 조회 miss로 인한 중복 자산 생성 방지",
+            "매일 00:30(KST) 스냅샷 생성 시 전체 CRUD를 차단하는 Global Lock으로 스냅샷 정합성 보장",
+            "Ledger·Merkle Tree 구조 문서화 및 구조도 작성으로 팀 공유",
           ],
           imageUrl: ["/zeroset/asset-detail.png", "/zeroset/part-history.png", "/zeroset/delete-history.png"],
         },
@@ -286,7 +322,8 @@ const basePortfolioData: PortfolioData = {
           title: "zeron-ledger 공통 라이브러리 구축 (무결성 증명)",
           items: [
             "Ledger 로직을 core / mongodb / spring-boot-starter / testkit 멀티모듈 라이브러리로 분리",
-            "Diff(flattened path 기반 변경점 계산), Canonical JSON 직렬화 + SHA-256 해시 체인 구현",
+            "Diff(flattened path 기반 변경점 계산), 키 정렬 canonical JSON으로 직렬화한 data payload만 SHA-256 해싱하는 해시 체인 구현 (운영 메타데이터는 해시 대상에서 제외)",
+            "LedgerConfiguration(Current+Ledger)만 쓰거나 SmtConfiguration을 더해 SMT root 영속화까지 선택 적용하는 구성 옵션 설계",
             "depth-256 Sparse Merkle Tree(SMT)로 inclusion / non-inclusion proof 생성 및 검증 구현 (Current 상태 무결성 증명)",
             "@EnableZeronLedger auto-configuration으로 호스트 프로젝트가 MongoOperations만 제공하면 동작하도록 설계",
           ],
@@ -321,11 +358,52 @@ const basePortfolioData: PortfolioData = {
           ],
         },
         {
-          title: "헥사고날 계층 정리 및 빌드 검증",
+          title: "운영 안정화 — 데이터 정합성·버그 수정 시리즈",
           items: [
-            "application service가 Feign client를 직접 의존하던 구조를 UseCase → outbound Port → Adapter → Client 흐름으로 정리",
-            "Font/SW meta 호출 구조를 동일 패턴(FontMetaPort·SoftwareMetaPort)으로 통일",
-            "변경마다 zeron-ledger test 및 각 서비스 compileKotlin으로 빌드 안정성 검증",
+            "Tangible Chart NPE, \"null\" 문자열이 저장되는 버그, 자산 상태 수정 불가, 부품교체 이력 '제품' 표기 오류, PMG·Agent 설치 기기 리스트 버그 등 운영 버그 수정",
+            "Ledger에서 version만 올라가는 문제 2건 추적·수정, (Soft·Tan·Sett) DreamChartInput GraphQL 바인딩 자동 변환 문제 해결",
+            "SW 사용시간 추적(ProcessMileage) 데이터 계층 정비 — 할당됐지만 저사용·미사용인 라이선스를 찾아 회수해 고객 비용을 줄이는 기능: device_id+date+tenant_id 복합 유니크 키로 중복 저장 방지, val/var 구분으로 식별자(groupId·userId) 불변성을 타입으로 강제",
+            "UserDetail 컬렉션 이름 변경 및 UserDetail-swAsset groupId 불일치 문제 수정",
+          ],
+        },
+        {
+          title: "DOCS 최신화 & 컴파일러 경고 정리",
+          items: [
+            "Feign·RabbitMQ 등 실제 동작과 어긋난 서비스별 README를 코드 실측 기반으로 최신화 — 각 서비스 README 완료 후 Root(zeroset-module) README 갱신",
+            "Kotlin 1.9.22 → 2.3.20 업그레이드로 드러난 경고(KT-73255) 해결 — @Autowired·@Qualifier 생성자 주입 annotation에 '@param:' 타겟을 명시해 기존 동작을 유지하며 경고 제거",
+          ],
+        },
+        {
+          title: "PC 그룹 → 자산 그룹 동기화 기능 (고객사 요구)",
+          items: [
+            "Device-manage의 PC 그룹 구조를 자산(Tangible) 그룹으로 동기화하는 기능을 스프린트 내 설계·구현",
+            "그룹 ID 변경 시 사용자 중복 매핑 검증 로직 처리",
+            "zeroset-tangible-asset-service 5.0.3 릴리스로 배포 (MR 4건), 사용자 자산 동기화 스키마·프론트 수정 문서화",
+          ],
+        },
+        {
+          title: "내부망(폐쇄망) 지도 서버 개발 — zeroback-map-service",
+          items: [
+            "설계 원칙: \"빌드는 1회(사외), 런타임은 outbound 0\" — 인터넷이 필요한 단계를 사전 빌드와 지오코딩 서버 egress 한 곳으로 격리, 런타임 배경 지도는 완전히 내부망에서만 동작",
+            "① 사전 빌드 파이프라인: OSM pbf 원본 → Planetiler로 전국 지도 타일(korea-full.mbtiles) 생성 → TileServer GL + 타일·글리프(폰트)·sprite(아이콘)·라이트/다크 스타일(style.json)을 Docker 이미지에 통째로 베이킹 — 타일 데이터만 담는 경량 이미지(Dockerfile.data)도 분리 구성",
+            "② 런타임: 지도를 '그리는' 건 프론트(MapLibre·GPU), 서버(TileServer GL)는 화면에 보이는 영역의 타일·자산만 서빙 — 에이전트 점·클러스터링, POI 아이콘+한글 라벨, 클릭 정보 팝업, 라이트/다크 테마 구현",
+            "③ 폐쇄망 지오코딩: 에이전트 공인 IP → geolocation-module이 서버에서 1회만 외부 Geolocation API 호출 → 좌표를 MongoDB에 저장하고 런타임엔 저장된 좌표만 조회 — 방식 자체를 docs(airgap-geocoding)로 문서화",
+            "지도 샘플 프론트(2D/3D 빌딩 뷰, 장비 위치 마커) 개발 — IT 자산 '위치' 표시, 위치 이동 감지 시 자동 분실 처리 연계까지 고려한 설계 (MR 3건)",
+          ],
+        },
+        {
+          title: "GraphQL 예외 처리 정비 & Spring Boot 3.5.15 업그레이드",
+          items: [
+            "존재하지 않는 ID 조회 시 BadRequest가 500으로 반환되던 GraphQL 예외 처리 경로 수정 (에러 케이스를 직접 주입해 검증)",
+            "ZeroSet 모듈·Device-manage 전반 Spring Boot 2.7.18 → 3.5.15 업그레이드 진행 및 GraphqlConfig 등 버전 이슈 대응 (진행 중) — 1월 모노레포 전환 시점부터 3.x 마이그레이션 실익을 검토해온 계획의 실행",
+          ],
+        },
+        {
+          title: "(진행 중) ZeroMon 동적 데이터 추출기 — 고객 셀프서비스 통계/리포트",
+          items: [
+            "수동 DB Query로 만들어 주던 고객 리포트를 고객사가 직접 원하는 형태로 추출할 수 있게 하는 기능 설계",
+            "MongoDB aggregation 기반 동적 컬럼 구성 — 생산시점별 PC/모니터 목록, PC별 네트워크(DNS) 정보, NIC 그룹핑을 통한 미인가 장치 확인 등 고객 사례 대응",
+            "서버 리소스 보호를 위해 1회성 실행으로 제한하되 preset은 저장 가능하도록 설계",
           ],
         },
       ],
@@ -335,8 +413,66 @@ const basePortfolioData: PortfolioData = {
         "SMT 갱신 비용을 전체 재계산에서 트랜잭션 단위 증분 + 버퍼링으로 최적화하여 DB write를 트랜잭션당 1회로 축소",
         "운영 메타데이터만 바뀌는 무의미한 Ledger version 증가와 Current 조회 miss로 인한 중복 자산 생성 제거",
         "Trie 매칭 메타 카탈로그로 감지 SW 자동 그룹화(매칭률 100%) 및 폰트 자산·라이선스 관리 기능 신규 도입",
+        "고객사 요구사항(PC 그룹 동기화·내부망 지도·동적 리포트)을 2주 스프린트 단위로 릴리스 — tangible-asset-service 5.0.3 등 버전 릴리스 주도",
+        "레거시 병행 운영(Strangler Pattern) + 00:30 Global Lock 스냅샷 정책으로 서비스 중단 없이 점진 전환 — 프론트 GraphQL 인터페이스 무변경 유지",
+        "Event Sourcing·CQRS·SMT 리서치와 설계안 4종 비교 문서로 아키텍처 의사결정 주도 — '3월 설계 → 4월 개발 → 5월 초 릴리즈' 로드맵을 직접 수립하고 달성",
       ],
       tags: ["Kotlin", "Spring Boot", "MSA", "MongoDB", "Ledger", "Merkle Tree", "RabbitMQ", "GraphQL"],
+    },
+    {
+      id: "zeron-feedback",
+      name: "Zeron Space Portal — 고객 피드백 관리 시스템",
+      shortDescription: "폐쇄망 고객사까지 지원하는 피드백 수집·답변 시스템 (백엔드 설계~관리 UI)",
+      type: "work",
+      featured: true,
+      category: "company",
+      icon: "💬",
+      period: "2026.03 ~ 2026.06",
+      role: "백엔드 개발 (스키마 설계 ~ 관리 기능)",
+      overview:
+        "제론소프트엔 제품(ZeroSet·ZeroMon 등) 사용 고객의 피드백을 수집하고 답변까지 관리하는 시스템입니다. 3월에 feedback-feature-service의 도메인·스키마 설계와 백엔드 최초 릴리스를 맡았고, 6월에 답변(Answer) 기능과 Zeron Space Portal 관리 화면, 서비스 고도화까지 완성했습니다. 인터넷이 차단된 내부망(폐쇄망) 고객사가 많은 제품 특성상, 실시간 연동 대신 export/import 기반의 오프라인 피드백 파이프라인으로 설계한 것이 핵심입니다.",
+      techStack: ["Kotlin", "Spring Boot", "GraphQL", "MongoDB", "GitLab CI"],
+      teamComposition: ["백엔드 1명 (본인), 관리 프론트 겸업"],
+      tasks: [
+        {
+          title: "피드백 서비스 백엔드 설계 및 최초 릴리스 (Sprint 4)",
+          items: [
+            "피드백 도메인·스키마 구조 설계 문서 작성",
+            "feedback-feature-service 0.0.2 릴리스 — 피드백 수집/조회 GraphQL API",
+            "flags 체계 설계: new / answered / question / feature_request / bug (중복 가능)",
+          ],
+        },
+        {
+          title: "답변(Answer) 기능 및 export/import 파이프라인",
+          items: [
+            "CreateAnswerInput GraphQL API 추가 (feedback-feature-service 0.0.3)",
+            "answer export(Portal) ↔ import(feedback service) 흐름 구현 — 폐쇄망 고객사가 오프라인으로 답변을 반입하는 구조",
+            "export JSON 스키마 설계: status·deleted 필드 제외, deleted row 자체 제외, 고객사 식별용 tenant_id 포함",
+            "중복 검사를 existsById 반복 호출 대신 findAllById 벌크 조회로 처리하는 등 쿼리 성능 검토",
+          ],
+        },
+        {
+          title: "Zeron Space Portal 피드백 관리 화면",
+          items: [
+            "피드백 리스트/분류/답변 상태/담당자/테넌트 컬럼 기반 관리 화면 개발",
+            "답변 Export·Import 버튼 및 처리 흐름 연동",
+          ],
+        },
+        {
+          title: "서비스 고도화 (Sprint 12)",
+          items: [
+            "Tenant별 리스트 보기 및 답변 Export 기능 추가",
+            "페이지 링크 기반 제품 카테고리(ZeroSet/ZeroMon 등) 자동 분류 — 판별 불가 시 수동 수정 가능하게 설계",
+            "제품별 필터링, 리스트 내 스크린샷 미리보기 등 운영 편의 개선",
+          ],
+        },
+      ],
+      achievements: [
+        "스키마 설계부터 관리 UI까지 피드백 시스템 전체 흐름을 3개월간 주도적으로 구축",
+        "폐쇄망(내부망) 고객사를 위한 export/import 기반 오프라인 피드백 파이프라인 설계",
+        "tenantId 1회 발급 등 내부망 제약을 반영한 인증·식별 흐름 설계",
+      ],
+      tags: ["Kotlin", "Spring Boot", "GraphQL", "MongoDB", "폐쇄망"],
     },
     {
       id: "taropick",
